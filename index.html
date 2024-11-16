@@ -278,7 +278,7 @@ const prompts = [
     let activePopups = 0;
 
     function showPopup(id) {
-      if (activePopups >= 5) return;
+      if (activePopups >= 3) return;
       const popup = document.getElementById(`popup${id}`);
       const randomIndex = Math.floor(Math.random() * prompts.length);
       document.getElementById(`popup-text${id}`).innerText = prompts[randomIndex];
@@ -294,7 +294,7 @@ const prompts = [
       const popup = document.getElementById(`popup${id}`);
       popup.style.display = "none";
       activePopups--;
-      const delay = Math.random() * 2000 + 500; // Random delay between 0.5-2.5 seconds
+      const delay = Math.random() * 3000 + 500; // Random delay between 0.5-2.5 seconds
       setTimeout(() => showPopup(id), delay);
     }
 
