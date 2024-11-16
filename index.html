@@ -1,161 +1,45 @@
-audio#audio
-	source(
-		src="https://raw.githubusercontent.com/ricardoolivaalonso/Codepen/master/Printer/printer.mp3",
-		type="audio/mpeg"
-	)
-#shadows.shadows
-	.shadow-1.face
-	.shadow-2.face
-	.shadow-3.face
-	.shadow-4.face
-#printer.printer
-	.inside-shadow
+<html>
+<body bgcolor="#602480">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 539.99999 539.99989" height="540" width="540" id="svg2">
+  <defs>
+<path id="clipshape" d="m1.5e2 1.2e2c-0.24-55 2.33e2 2.4 2.6e2 6.9-8.5 1.3-21 4.3-28 8.1-12 5.7-26 16-31 34h-2e2"/>
+   <clipPath id="filament-clip">
+     <use xlink:href="#clipshape" overflow="visible" />
+     </clipPath>
+  </defs>
+    <path d="M0 0h540v540H0z" id="path4" fill="#602480" stroke-width="5" stroke-miterlimit="5.667"/>
+    <path
+     stroke-miterlimit="10"
+     d="m 276.945,265.28338 c -0.30869,-32.72091 4.49007,-57.81876 12.55118,-77.06466"
+     class="bottom-filament"
+     style="fill:none;stroke:#2dabde;stroke-width:5.00000048;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:5.66666651;stroke-dasharray:none" />
+<g class=filament-group clip-path="url(#filament-clip)"> 
+<path
+     style="fill:none;stroke:#2dabde;stroke-width:5.00000048;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:5.66666651;stroke-dasharray:none"
+     class="top-filament"
+     d="m 292.37518,182.35151 c 23.86574,-48.18082 70.27183,-54.50451 102.10049,-57.06865 41.01263,-3.30401 105.0775,-0.0955 107.45434,-0.10098"
+     stroke-miterlimit="10" />
+</g>
+  <circle stroke-miterlimit="5.667" cx="401.944" cy="184.034" r="56.25" id="circle6" fill="#602480" stroke="#e9e9ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse stroke-miterlimit="5.667" ry="59.25" rx="61.25" cy="184.034" cx="401.944" id="ellipse8" fill="none" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<!--  <path stroke-miterlimit="5.667" d="M276.945 265.283c-1.25-132.5 81.25-140 124.985-140.1" class="filament" fill="none" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> -->
+  <circle stroke-miterlimit="5.667" cy="184.034" cx="401.944" r="24.076" id="circle12" fill="none" stroke="#e9e9ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path stroke-miterlimit="5.667" d="M148.125 193.75v237.5h-25v-262.5h293.75v262.5h-25v-237.5z" id="path14" fill="#602480" stroke="#e9e9ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M153.423 266.077H385.7" class="x-axis" fill="#a2adc2" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="5.667"/>
 
-	#paper-shadow.paper-shadow.face
-	#paper.paper 
-	//-----------------------    
-	.at
-		.at__front.face 
-		.at__back.face 
-		.at__right.face 
-		.at__left.face 
-		.at__top.face 
-		.at__bottom.face 
-	.ab
-		.ab__front.face 
-		.ab__back.face 
-		.ab__right.face 
-		.ab__left.face 
-		.ab__top.face 
-		.ab__bottom.face 
-	.am
-		.am__front.face 
-		.am__back.face 
-		.am__right.face 
-		.am__left.face 
-		.am__top.face 
-		.am__bottom.face 
-	//-----------------------    
-	.bl
-		.bl__front.face 
-		.bl__back.face 
-		.bl__right.face 
-		.bl__left.face 
-		.bl__top.face 
-		.bl__bottom.face 
-	.br
-		.br__front.face 
-		.br__back.face 
-		.br__right.face 
-		.br__left.face 
-		.br__top.face 
-		.br__bottom.face 
-	.bb
-		.bb__front.face 
-		.bb__back.face 
-		.bb__right.face 
-		.bb__left.face 
-		.bb__top.face 
-		.bb__bottom.face 
-	.bt
-		.bt__front.face 
-		.bt__back.face 
-		.bt__right.face 
-		.bt__left.face 
-		.bt__top.face 
-		.bt__bottom.face 
-	//-----------------------    
-	.cl
-		.cl__front.face 
-		.cl__back.face 
-		.cl__right.face 
-		.cl__left.face 
-		.cl__top.face 
-		.cl__bottom.face 
-	.cr
-		.cr__front.face 
-		.cr__back.face 
-		.cr__right.face 
-		.cr__left.face 
-		.cr__top.face 
-		.cr__bottom.face 
-	.cm
-		.cm__front.face 
-			.screen
-				#text.screen__text printing
-			.buttons
-				.button.button--cta
-					.button__front.face 
-					.button__back.face 
-					.button__right.face 
-					.button__left.face 
-					.button__top.face 
-					.button__bottom.face 
-				.button
-					.button__front.face 
-					.button__back.face 
-					.button__right.face 
-					.button__left.face 
-					.button__top.face 
-					.button__bottom.face 
-				.button
-					.button__front.face 
-					.button__back.face 
-					.button__right.face 
-					.button__left.face 
-					.button__top.face 
-					.button__bottom.face 
-				.button
-					.button__front.face 
-					.button__back.face 
-					.button__right.face 
-					.button__left.face 
-					.button__top.face 
-					.button__bottom.face 
-				.button.button--cta
-					.button__front.face 
-					.button__back.face 
-					.button__right.face 
-					.button__left.face 
-					.button__top.face 
-					.button__bottom.face 
-				#button.large
-					.large__front.face 
-					.large__back.face 
-					.large__right.face 
-					.large__left.face 
-					.large__top.face start
-					.large__bottom.face 
-		.cm__back.face 
-		.cm__right.face 
-		.cm__left.face 
-		.cm__top.face 
-		.cm__bottom.face 
-	.ct
-		.ct__front.face 
-		.ct__back.face 
-		.ct__right.face 
-		.ct__left.face 
-		.ct__top.face 
-		.ct__bottom.face 
-	.cb
-		.cb__front.face 
-		.cb__back.face 
-		.cb__right.face 
-		.cb__left.face 
-		.cb__top.face 
-		.cb__bottom.face 
-	.cbl
-		.cbl__front.face 
-		.cbl__back.face 
-		.cbl__right.face 
-		.cbl__left.face 
-		.cbl__top.face 
-		.cbl__bottom.face 
-	.cbr
-		.cbr__front.face 
-		.cbr__back.face 
-		.cbr__right.face 
-		.cbr__left.face 
-		.cbr__top.face 
-		.cbr__bottom.face
+  <path d="M212.428 313.603c-1.87 0-6.424.095-6.424.095-2.704 5.42-4.968 12.603-5.132 17.345-.142 4.086 1.034 8.983 1.903 12.308 2.89 11.072 10.258 18.35 10.258 18.35L270 418.784l56.968-57.083s7.367-7.28 10.257-18.35c.868-3.325 2.045-8.222 1.904-12.308-.165-4.717-2.406-11.848-5.09-17.258 0 0-4.586-.182-6.468-.182-38.38.085-76.763.04-115.145 0z" id="path20" fill="#2dabde" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>
+  <path d="M329.327 306.288H210.615" class="layer-1" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>  -->
+  <path d="M218.615 298.793h47.864" class="layer-2b" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>
+  <path d="M273.523 298.793h47.803" class="layer-2a" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>
+  <path d="M287.65 291.277l10.52.012 5.255.004" class="layer-3b" fill="#2dabde" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>  -->
+ <path class="layer-1-printing" d="M325.88 302.27c.062 2.645-1.74 3.947-5.457 4.018H210.615" fill="none" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/> 
+<path class="layer-3a" d="M234.65 291.37l10.992.013 4.784.005" fill="#2dabde" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/> 
+<path d="M234.65 291.37l8.992.013c2.574.07 4.855-1.135 4.784-3.995" class="layer-3a-printing" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>
+  <path class="layer-3b-printing" d="M287.65 291.37l8.992.013c2.574.07 4.855-1.135 4.784-3.995" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/> 
+  <path class="layer-2a-printing" d="M277.062 294.775c-.062 2.645 1.738 3.947 5.456 4.018h38.81" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>
+  <path class="layer-2b-printing" d="M222.215 294.775c-.063 2.645 1.738 3.947 5.456 4.018h38.81" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/> 
+      
+ <path d="M266.066 256.513v17.717l13.287 13.287 13.288-13.287v-17.717z" class="printhead" fill="#602480" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>
+</svg>
+</body>
+ </html>
