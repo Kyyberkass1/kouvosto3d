@@ -87,10 +87,10 @@
   <h1>Welcome to Kouvola</h1>
 
   <div class="container">
-    <h2>Experience Kouvola</h2>
-    <p>The city where dreams go to die.</p>
+    <h2>Explore Kouvola</h2>
+    <p>The city where gray skies meet industrial charm.</p>
 
-    <h2>About Kouvola</h2>
+    <h2>Memes About Kouvola</h2>
 
     <div class="meme">
       <img src="https://preview.redd.it/4dncmz7i0ut51.png?auto=webp&s=fc9822740c3426ffc1f90deb9318244cb883cc1e" alt="Kouvola Color Palette">
@@ -249,8 +249,8 @@
       const popup = document.getElementById(`popup${id}`);
       const randomIndex = Math.floor(Math.random() * prompts.length);
       document.getElementById(`popup-text${id}`).innerText = prompts[randomIndex];
-      const randomTop = Math.random() * 70 + 10; // Random position on screen
-      const randomLeft = Math.random() * 70 + 10;
+      const randomTop = Math.random() *60 + 20; // Random position on screen
+      const randomLeft = Math.random() * 60 + 20;
       popup.style.top = `${randomTop}%`;
       popup.style.left = `${randomLeft}%`;
       popup.style.display = "block";
