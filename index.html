@@ -50,8 +50,8 @@
       position: fixed;
       background: rgba(0, 0, 0, 0.9);
       color: #fff;
-      width: 300px;
-      padding: 20px;
+      width: 250px;
+      padding: 10px;
       border: 2px solid #777;
       z-index: 1000;
       display: none;
@@ -59,7 +59,12 @@
     }
 
     .popup h3 {
+      font-size: 1.2em;
       margin: 0 0 10px 0;
+    }
+
+    .popup p {
+      font-size: 0.9em;
     }
 
     .popup button {
@@ -106,28 +111,40 @@
     </div>
   </div>
 
-  <!-- Pop-ups -->
-  <div class="popup" id="popup1" style="top: 10%; left: 10%;">
+  <!-- Multiple Pop-ups -->
+  <div class="popup" id="popup1" style="top: 10%; left: 5%;"> 
     <h3>Did You Know?</h3>
-    <p>Kouvola has perfected the art of gray skies.</p>
+    <p>Kouvola has over 256 shades of gray!</p>
     <button onclick="closePopup('popup1')">Close</button>
   </div>
 
-  <div class="popup" id="popup2" style="top: 20%; left: 50%;">
+  <div class="popup" id="popup2" style="top: 15%; left: 60%;">
     <h3>Fun Fact</h3>
-    <p>The brightest thing in Kouvola is its memes.</p>
+    <p>Kouvola's train station is the highlight of every cloudy day.</p>
     <button onclick="closePopup('popup2')">Close</button>
   </div>
 
-  <div class="popup" id="popup3" style="top: 40%; right: 10%;">
+  <div class="popup" id="popup3" style="top: 30%; left: 10%;">
     <h3>Breaking News</h3>
-    <p>Kouvola's train station now offers free existential crises.</p>
+    <p>Kouvola is now recognized as Finland’s capital of melancholy!</p>
     <button onclick="closePopup('popup3')">Close</button>
+  </div>
+
+  <div class="popup" id="popup4" style="bottom: 20%; right: 20%;">
+    <h3>Fun Fact</h3>
+    <p>The weather in Kouvola reflects its mood: overcast.</p>
+    <button onclick="closePopup('popup4')">Close</button>
+  </div>
+
+  <div class="popup" id="popup5" style="bottom: 10%; left: 30%;">
+    <h3>Trivia</h3>
+    <p>Kouvola is 50% clouds, 50% humor, 0% sunshine.</p>
+    <button onclick="closePopup('popup5')">Close</button>
   </div>
 
   <!-- Script -->
   <script>
-    // Show persistent pop-ups
+    // Show multiple persistent pop-ups
     const popups = document.querySelectorAll('.popup');
     let delay = 0;
 
@@ -135,7 +152,7 @@
       setTimeout(() => {
         popup.style.display = 'block';
       }, delay);
-      delay += 2000; // 2-second interval
+      delay += 1000; // 1-second interval
     });
 
     // Close pop-ups
