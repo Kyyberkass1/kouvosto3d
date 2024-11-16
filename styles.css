@@ -1,771 +1,581 @@
-$white-1: #f2f3ed;
-$white-2: #dbdbdb;
-$white-3: #b5b8bf;
-$white-4: #7e8188;
-
-$gray-1: #DCD7D0;
-$gray-2: #b8b8b8;
-$gray-3: #9a9a9a;
-$gray-4: #868686;
-
-$button-1: #e3d279;
-$button-2: #cbc146;
-$button-3: #b5b42b;
-
-$button-4: #7981e3;
-$button-5: #636cd4;
-$button-6: #464fb5;
-
-$bg-1: #A7E3F5;
-$bg-2: #4E8BB4;
-
-
-/***********************/
-/***********************/
-@mixin cube($width, $height, $depth) {
-    &__front{ @include cube-front($width, $height, $depth); }
-    &__back{ @include cube-back($width, $height, $depth); }
-    &__right{ @include cube-right($width, $height, $depth); }
-    &__left{ @include cube-left($width, $height, $depth); }
-    &__top{ @include cube-top($width, $height, $depth);}
-    &__bottom{ @include cube-bottom($width, $height, $depth); }
-}
-/************************/
-/* Mixin para crear cubo ( Caras siempre al frente ) */
-/************************/
-@mixin cube-front($width, $height, $depth) {
-    width: $width;
-    height: $height;
-    transform-origin: bottom left;
-    transform: rotateX(-90deg) translateZ( -($height - ($depth * 2) ) );
-}
-@mixin cube-back($width, $height, $depth) {
-    width: $width;
-    height: $height;
-    transform-origin: top left;
-    transform: rotateX(-90deg) rotateY(180deg) translateX(-$width) translateY(-$height) ;
-}
-@mixin cube-right($width, $height, $depth) {
-    width: $depth * 2;
-    height: $height;
-    transform-origin: top left;
-    transform: rotateY(90deg) rotateZ(-90deg) translateZ($width) translateX(-$depth * 2) translateY(-$height);
-}
-@mixin cube-left($width, $height, $depth) {
-    width: $depth * 2;
-    height: $height;
-    transform-origin: top left;
-    transform: rotateY(-90deg) rotateZ(90deg) translateY(-$height);
-}
-@mixin cube-top($width, $height, $depth) {
-    width: $width;
-    height: $depth * 2;
-    transform-origin: top left;
-    transform: translateZ($height) ;
-}
-@mixin cube-bottom($width, $height, $depth) {
-    width: $width;
-    height: $depth * 2;
-    transform-origin: top left;
-    transform: rotateY(180deg) translateX(-$width);
-}
-/***********************/
-/***********************/
-@mixin face-ani($animation, $time, $side, $width-el, $height-el, $depth-el) {
-
-    animation: #{$animation} #{$time} infinite ease;
-
-    @keyframes #{$animation} {
-        0%, 15%, 45%, 60%, 62%, 68%{
-            @if $side == "cube-front" { @include cube-front($width-el, $height-el, $depth-el); }
-            @else if $side == "cube-back" { @include cube-back($width-el, $height-el, $depth-el); }
-            @else if $side == "cube-right" { @include cube-right($width-el, $height-el, $depth-el); }
-            @else if $side == "cube-left" { @include cube-left($width-el, $height-el, $depth-el); }
-            @else if $side == "cube-top" { @include cube-top($width-el, $height-el, $depth-el); }
-        }
-        20%, 40%, 58%, 64%, 70%, 100%{
-            @if $side == "cube-front" { @include cube-front($width-el, $height-finish, $depth-el); }
-            @else if $side == "cube-back" { @include cube-back($width-el, $height-finish, $depth-el); }
-            @else if $side == "cube-right" { @include cube-right($width-el, $height-finish, $depth-el); }
-            @else if $side == "cube-left" { @include cube-left($width-el, $height-finish, $depth-el); }
-            @else if $side == "cube-top" { @include cube-top($width-el, $height-finish, $depth-el); }
-        }
-    }
-}
-/**/
-*, *::after, *::before {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-    transform-style: preserve-3d;
-    -webkit-tap-highlight-color: transparent;
-}
-/* Generic */
-body{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-
-    background-color: $bg-1;
-	cursor: pointer;
-
-    color: white;
-    font-family: monospace;
-    font-size: .8vw;
-    letter-spacing: .1vw;
-    font-weight: bold;
-    text-transform: uppercase;
-
-
-    user-select: none;
+svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background-color:"#602480"
 }
 
-.face{ position: absolute; }
-
-/***************/
-.printer,
-.shadows{
-	position: absolute;
-    width: 26vw;
-    height: 15vw;
-
-	transform:
-		perspective(10000px)
-		rotateX(60deg)
-		rotateZ(-45deg)
-		translateZ(-6vw)
-        scaleX(.8)
-	;
-}
-.shadow-1{
-    right: 0;
-    bottom: -2.5%;
-    width: 110%;
-    height: 120%;
-    background-color: $bg-2;
-}
-.shadow-2{
-    bottom: -4vw;
-    left: 2.5vw;
-    width: 21vw;
-    height: 4vw;
-    background-color: $bg-2;
-}
-.shadow-3{
-    top: -2.6vw;
-    left: -5vw;
-    width: 4vw;
-    height: 100%;
-    background-color: $bg-2;
-}
-.shadow-4{
-    left: -2%;
-    top: -2%;
-    width: 104%;
-    height: 104%;
-    background-color: darken($bg-2, 10);
-    filter: blur(3px);
-}
-.paper{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-
-    position: absolute;
-    left: 5.5vw;
-    bottom: 5vw;
-    height: 5vw;
-    width: 15vw;
-    transform: translateZ(2.6vw);
-    background-color: white;
-
-    &::before{
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-
-        background-image: repeating-linear-gradient(to top, rgba($bg-2, .075), rgba($bg-2, .075) .5vw, white .5vw, white 1.01vw);
-        border: 2vw solid white;
-    }
-}
-.paper-shadow{
-    position: absolute;
-    left: 5.5vw;
-    bottom: 0vw;
-    height: 5vw;
-    width: 15vw;
-
-    background-color: $bg-2;
-    transition: 1s;
-}
-.inside-shadow{
-    position: absolute;
-    left: 2.5vw;
-    bottom: 2vw;
-    height: 5vw;
-    width: 21vw;
-    transform: translateZ(2.62vw);
-    transition: 1s;
-
-    background-color: rgba($gray-4, .5);
+body {
+  background-color:"#602480"
 }
 
-/***************/
-$width-el: 26vw;
-$height-el: 1vw;
-$depth-el: 2.5vw;
-
-.at{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    top: 0;
-    position: absolute;
-
-    &__front{ background-color: $white-4; }
-    &__back{ background-color: $white-3; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-color: $white-4; }
-    &__bottom{  background-color: $white-3; }
-}
-/***************/
-.ab{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    bottom: 2.5vw;
-    position: absolute;
-
-    &__front{ background-color: $white-2; }
-    &__back{ background-color: $white-4; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-color: $white-4; }
-    &__bottom{  background-color: $white-3; }
-}
-/***************/
-$width-el: 26vw;
-$height-el: .5vw;
-$depth-el: 2.5vw;
-
-.am{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 5vw;
-    transform: translateZ(.5vw);
-
-    &__front{ background-color: $white-2; }
-    &__back{ background-color: $white-4; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-color: $white-4; }
-    &__bottom{  background-color: $white-3; }
-}
-/***************/
-/***************/
-/***************/
-$width-el: 2.5vw;
-$height-el: 2vw;
-$depth-el: 7.5vw;
-
-.bl{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    transform: translateZ(1.1vw);
-
-    &__front{ background-color: $white-2; }
-    &__back{ background-color: $white-4; }
-    &__right{ background-color: $white-3; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-image: linear-gradient(to bottom, $white-1 2.5vw, $white-4 2.5vw, $white-4 13vw, $white-1 13vw);}
-    &__bottom{  background-color: $white-3; }
-}
-/***************/
-.br{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    right: 0;
-    transform: translateZ(1.1vw);
-
-    &__front{ background-color: $white-2; }
-    &__back{ background-color: $white-4; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-image: linear-gradient(to bottom, $white-1 2.5vw, $white-4 2.5vw, $white-4 13vw, $white-1 13vw);}
-    &__bottom{  background-color: $white-3; }
+.x-axis {
+  transform-origin: 50% 50%;
+  transform: translate(0px,15px);
+  animation: x-axis-printing 8s linear forwards;
 }
 
-/***************/
-$width-el: 21vw;
-$height-el: 1vw;
-$depth-el: 7.5vw;
-
-.bb{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    left: 2.5vw;
-    transform: translateZ(1.1vw);
-
-    &__front{ background-color: $white-2; }
-    &__back{ background-color: $white-4; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-color: $white-4; }
-    &__bottom{  background-color: $white-3; }
-}
-/***************/
-$width-el: 21vw;
-$height-el: 1vw;
-$depth-el: 5vw;
-
-.bt{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 0;
-    left: 2.5vw;
-    transform: translateZ(2vw);
-
-    &__front{ background-color: $white-2; }
-    &__back{ background-color: $white-4; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-color: $white-1; }
-    &__bottom{  background-color: $white-3; }
-}
-/***************/
-/***************/
-/***************/
-$width-el: 2.5vw;
-$height-el: 8vw;
-$depth-el: 5.5vw;
-
-.cl{
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 2vw;
-    transform: translateZ(3.2vw);
-
-    &__front{
-        width: $width-el;
-        height: $height-el * 1.04;
-        transform-origin: bottom left;
-        transform: rotateX(-90deg) translateZ( -( ($height-el * 1.04) - ($depth-el * 2) ) ) rotateX(16deg);
-        background-color: $white-2;
-    }
-    &__back{
-        @include cube-back($width-el, $height-el, $depth-el);
-        background-color: $white-2;
-    }
-    &__right{
-        @include cube-right($width-el, $height-el, $depth-el);
-        background-image: linear-gradient(-74deg, $white-2 10.5vw, transparent 10.5vw);
-
-    }
-    &__left{
-        @include cube-left($width-el, $height-el, $depth-el);
-        background-image: linear-gradient(74deg, $white-3 10.5vw, transparent 10.5vw);
-
-    }
-    &__top{
-        width: $width-el ;
-        height: $depth-el * 2 - 2.25vw;
-        transform-origin: top left;
-        transform: translateZ($height-el) ;
-        background-color: $white-1;
-
-    }
-    &__bottom{
-        @include cube-bottom($width-el, $height-el, $depth-el);
-        background-color: $white-3;
-    }
-}
-/***************/
-.cr{
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 2vw;
-    right: 0;
-    transform: translateZ(3.2vw);
-
-    &__front{
-        width: $width-el;
-        height: $height-el * 1.04;
-        transform-origin: bottom left;
-        transform: rotateX(-90deg) translateZ( -( ($height-el * 1.04) - ($depth-el * 2) ) ) rotateX(16deg);
-        background-color: $white-2;
-    }
-    &__back{
-        @include cube-back($width-el, $height-el, $depth-el);
-        background-color: $white-2;
-    }
-    &__right{
-        @include cube-right($width-el, $height-el, $depth-el);
-        background-image: linear-gradient(-74deg, $white-2 10.5vw, transparent 10.5vw);
-
-    }
-    &__left{
-        @include cube-left($width-el, $height-el, $depth-el);
-        background-image: linear-gradient(74deg, $white-3 10.5vw, transparent 10.5vw);
-    }
-    &__top{
-        width: $width-el ;
-        height: $depth-el * 2 - 2.25vw;
-        transform-origin: top left;
-        transform: translateZ($height-el) ;
-        background-color: $white-1;
-
-    }
-    &__bottom{
-        @include cube-bottom($width-el, $height-el, $depth-el);
-        background-color: $white-3;
-    }
+.printhead {
+  transform-origin: 50% 50%;
+  transform: translate(0px, 20px);
+  animation: print-head 8s forwards linear;
 }
 
-/***************/
-$width-el: 21vw;
-$height-el: 7vw;
-$depth-el: 3vw;
-
-.cm{
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 6.85vw;
-    left: 2.5vw;
-    transform: translateZ(4.4vw);
-
-    &__front{
-        width: $width-el;
-        height: $height-el * 1.06;
-        transform-origin: bottom left;
-        transform: rotateX(-90deg) translateZ( -( ($height-el * 1.06) - ($depth-el * 2) ) ) rotateX(16deg);
-        background-color: $gray-2;
-    }
-    &__back{
-        @include cube-back($width-el, $height-el, $depth-el);
-        background-color: $gray-2;
-    }
-    &__right{
-        @include cube-right($width-el, $height-el, $depth-el);
-        background-image: linear-gradient(-74deg, $gray-2 5.725vw, transparent 5.725vw);
-    }
-    &__left{
-        @include cube-left($width-el, $height-el, $depth-el);
-        background-image: linear-gradient(74deg, $gray-3 5.725vw, transparent 5.725vw);
-    }
-    &__top{
-        width: $width-el ;
-        height: $depth-el * 2 - 2vw;
-        transform-origin: top left;
-        transform: translateZ($height-el) ;
-        background-color: $gray-1;
-    }
-    &__bottom{
-        @include cube-bottom($width-el, $height-el, $depth-el);
-        background-color: $gray-2;
-    }
-}
-/***************/
-$width-el: 21vw;
-$height-el: 8vw;
-$depth-el: 2.5vw;
-
-.ct{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 2vw;
-    left: 2.5vw;
-    transform: translateZ(3.2vw);
-
-    &__front{ background-color: $white-2; }
-    &__back{ background-color: $white-4; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-color: $white-1; }
-    &__bottom{  background-color: $white-3; }
-}
-/***************/
-
-$width-el: 21vw;
-$height-el: .5vw;
-$depth-el: 4vw;
-
-.cb{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 10vw;
-    left: 2.5vw;
-    transform: translateZ(2vw);
-
-    &__front{ background-color: $gray-2; }
-    &__back{ background-color: $gray-3; }
-    &__right{ background-color: $gray-2; }
-    &__left{ background-color: $gray-3; }
-    &__top{ background-image: linear-gradient(to bottom, $white-4 3vw, $gray-1 3vw);}
-    &__bottom{  background-color: $gray-3; }
-}
-/***************/
-
-$width-el: 1vw;
-$height-el: 1vw;
-$depth-el: 4vw;
-
-.cbl{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 10vw;
-    left: 2.5vw;
-    transform: translateZ(2.5vw);
-
-    &__front{ background-color: $gray-2; }
-    &__back{ background-color: $gray-3; }
-    &__right{ background-image: linear-gradient(to right, $white-4 3vw, $gray-2 3vw); }
-    &__left{ background-color: $gray-3; }
-    &__top{ background-image: linear-gradient(to bottom, $white-4 3vw, $gray-1 3vw);}
-    &__bottom{  background-color: $gray-3; }
-}
-/***************/
-.cbr{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    top: 10vw;
-    right: 2.5vw;
-    transform: translateZ(2.5vw);
-
-    &__front{ background-color: $gray-2; }
-    &__back{ background-color: $gray-3; }
-    &__right{ background-color: $gray-1; }
-    &__left{ background-image: linear-gradient(to right, darken($white-4, 5) 3vw, $gray-3 3vw); }
-    &__top{ background-image: linear-gradient(to bottom, $white-4 3vw, $gray-1 3vw); }
-    &__bottom{  background-color: $gray-3; }
-}
-/***************/
-/***************/
-/***************/
-.screen{
-
-    position: absolute;
-    top: 1vw;
-    left: 1vw;
-    width: 11vw;
-    height: 5vw;
-    background-color: $bg-1;
-    border-top: .125vw solid darken($bg-2, 5);
-    border-right: .3vw solid darken($bg-2, 5);
-
-
-    box-shadow: inset -.25vw -.25vw .4vw lighten($bg-2, 5);
-
-    &__text{
-        width: 100%;
-        height: 100%;
-        padding: .5vw;
-        font-size: 1vw;
-        opacity: 0;
-    }
+#filament-mask {
+  transform-origin: 50% 50%;
 }
 
-.buttons{
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: flex-start;
-
-    top: 1vw;
-    right: 1vw;
-    width: 7vw;
-    height: 5vw;
-    background-color: lighten($white-1, 10);
-    padding: .75vw;
+.top-filament {
+  transform-origin: 5% 95%;
+  animation: filament-follow 8s forwards linear;  
 }
 
-/***************/
-$width-el: 1.5vw;
-$height-el: .3vw;
-$depth-el: .25vw;
-
-.button{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: relative;
-    margin-bottom: .6vw;
-
-
-    &__front{ background-color: $white-3; }
-    &__back{ background-color: $white-1; }
-    &__right{ background-color: $white-2; }
-    &__left{ background-color: $white-3; }
-    &__top{ background-color: $white-2; }
-    &__bottom{  background-color: $white-3; }
-
-    &--cta{
-        .button__front{ background-color: $button-3; }
-        .button__back{ background-color: $button-1; }
-        .button__right{ background-color: $button-2; }
-        .button__left{ background-color: $button-3; }
-        .button__top{ background-color: $button-2; }
-        .button__bottom{  background-color: $button-3; }
-    }
+.bottom-filament {
+  transform-origin: 50% 90%;
+  transform: translate(0px, 20px);
+  animation: filament 8s forwards linear;
 }
 
-$width-el: 5.5vw;
-$height-el: .3vw;
-$depth-el: .4vw;
-
-.large{
-    @include cube($width-el, $height-el, $depth-el);
-
-    width: $width-el;
-    height: $depth-el;
-    position: absolute;
-    bottom: 1vw;
-
-    &:hover .large__top{
-        background-color: darken($button-4, 5);
-        transition: .25s;
-    }
-
-    &__front{ background-color: $button-6; }
-    &__back{ background-color: $button-4; }
-    &__right{ background-color: $button-5; }
-    &__left{ background-color: $button-6; }
-    &__top{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $button-4;
-    }
-    &__bottom{  background-color: $button-3; }
-}
-/***************/
-/***************/
-/***************/
-.is-paper-animated{ animation: paper 10s steps(6,end) infinite; }
-.is-paper-shadow-animated{ animation: paper 10s steps(6,end) infinite; }
-.is-text-animated{ animation: text 2s infinite; }
-.is-printer-animated{ animation: printer .4s infinite alternate ease-in-out; }
-.is-shadows-animated{ animation: shadows .4s infinite alternate ease-in-out; }
-
-@keyframes printer {
-    0%, 85%{
-        transform:
-            perspective(10000px)
-            rotateX(60deg)
-            rotateZ(-45deg)
-            translateZ(-5.6vw)
-            scaleX(.8)
-            rotateY(0deg)
-        ;
-    }
-    30%, 50%, 80%{
-        transform:
-            perspective(10000px)
-            rotateX(60deg)
-            rotateZ(-45deg)
-            translateZ(-5.8vw)
-            scaleX(.8)
-            rotateY(-.5deg)
-        ;
-    }
-    60%, 100%{
-        transform:
-    		perspective(10000px)
-    		rotateX(60deg)
-    		rotateZ(-45deg)
-    		translateZ(-5.8vw)
-            scaleX(.8)
-            rotateY(.5deg)
-    	;
-    }
-
-}
-@keyframes shadows {
-    0%, 85%{
-        transform:
-            perspective(10000px)
-            rotateX(60deg)
-            rotateZ(-45deg)
-            translateZ(-6vw)
-            scaleX(.8)
-        ;
-    }
-    30%, 50%, 80%{
-        transform:
-            perspective(10000px)
-            rotateX(60deg)
-            rotateZ(-45deg)
-            translateZ(-6vw)
-            scaleX(.81)
-        ;
-    }
-    60%, 100%{
-        transform:
-    		perspective(10000px)
-    		rotateX(60deg)
-    		rotateZ(-45deg)
-    		translateZ(-6vw)
-            scaleX(.79)
-    	;
-    }
-
+.layer-1-printing {
+  transform-origin: 50% 50%;
+  transform: translate(0px, 0px);
+  animation: print-layer-1 8s forwards linear;
+  stroke-dasharray: 118;
+  stroke-dashoffset: -118;
 }
 
-@keyframes text { 10%, 90%{ opacity: 1; } }
+.layer-1 {
+  opacity: 100%;
+  stroke-dasharray: 118;
+  stroke-dashoffset: -236;
+  animation: layer-1-printed 8s forwards linear;
+}
 
-@keyframes paper {
-    50%{
-        bottom: -7.5vw;
-        height: 15vw;
-        opacity: 1;
-    }
-    90%{
-        bottom: -12vw;
-        height: 15vw;
-        opacity: 1;
-    }
-    100%{
-        bottom: -12vw;
-        height: 15vw;
-        opacity: 0;
-    }
+.layer-2a-printing {
+  transform-origin: 50% 50%;
+  transform: translate(0px, 0px);
+  animation: print-2a 8s forwards linear;
+  stroke-dasharray: 47;
+  stroke-dashoffset: -94;
+  stroke: rgba(45,171,222,0);
+}
+
+.layer-2a {
+  opacity: 100%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: -96;
+  animation: layer-2a-printed 8s forwards linear;
+}
+
+.layer-2b-printing {
+  transform-origin: 50% 50%;
+  transform: translate(0px, 0px);
+  animation: print-2b 8s forwards linear;
+  stroke-dasharray: 47;
+  stroke-dashoffset: -94;
+  stroke: rgba(45,171,222,0);
+}
+
+.layer-2b {
+  opacity: 100%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: -96;
+  animation: layer-2b-printed 8s forwards linear;
+}
+
+.layer-3a-printing {
+  transform-origin: 50% 50%;
+  transform: translate(0px, 0px);
+  animation: print-3a 8s forwards linear;
+  stroke-dasharray: 16.098;
+  stroke-dashoffset: 16.098;
+  stroke: rgba(45,171,222,0);
+}
+
+ .layer-3a {
+  opacity: 100%;
+  stroke-dasharray: 15.78;
+  stroke-dashoffset: 15.78;
+  animation: layer-3a-printed 8s forwards linear;
+} 
+
+.layer-3b-printing {
+  transform-origin: 50% 50%;
+  transform: translate(0px, 0px);
+  animation: print-3b 8s forwards linear;
+  stroke-dasharray: 16.098;
+  stroke-dashoffset: 16.098;
+  stroke: rgba(45,171,222,0);
+}
+
+ .layer-3b {
+  opacity: 100%;
+  stroke-dasharray: 15.78;
+  stroke-dashoffset: 15.78;
+  animation: layer-3b-printed 8s forwards linear;
+} 
+
+@keyframes print-head {
+  // end level 0
+  0% { 
+  transform: translate(-73px, 15px)
+  }
+  // start level 1
+  5% { 
+  transform: translate(-73px, 10px)
+  }
+  // end level 1
+  31% { 
+  transform: translate(52px, 10px)
+  }
+  // level 2
+  35% { 
+  transform: translate(52px, 5px)
+  }
+  36% { 
+  transform: translate(40px, 5px)
+  }
+  // end 2a
+  45% { 
+  transform: translate(-4px, 5px)
+  } 
+  // start 2b 
+  49% { 
+  transform: translate(-6px, 5px)
+  }
+  // end 2b
+  60% { 
+  transform: translate(-62px, 5px)
+  }
+  // level 3
+  65% { 
+  transform: translate(-62px, 0px)
+  }
+  // start 3a
+  69% { 
+  transform: translate(-25px, 0px)
+  }  
+  //end 3a
+  76% {
+    transform: translate(-15px, 0px)
+  } 
+  //start 3b
+  78% { 
+  transform: translate(5px, 0px)
+  } 
+  // end 3b
+  85% { 
+  transform: translate(25px, 0px)
+  } 
+  // level 4 (home y)
+  90% { 
+  transform: translate(25px, -5px)
+  } 
+  // end (home x)
+  100% {
+  transform: translate(-100px, -5px)
+  }
+}
+
+@keyframes x-axis-printing {
+  0% { 
+  transform: translate(0px, 15px)
+  }
+  5% { 
+  transform: translate(0px, 10px)
+  }
+  30% { 
+  transform: translate(0px, 10px)
+  }
+  35% { 
+  transform: translate(0px, 5px)
+  } 
+  60% { 
+  transform: translate(0px, 5px)
+  }
+  65% { 
+  transform: translate(0px, 0px)
+  }
+  85% { 
+  transform: translate(0px, 0px)
+  } 
+  90% { 
+  transform: translate(0px, -5px)
+  } 
+  100% {
+  transform: translate(0px, -5px)
+  }
+ }
+
+@keyframes filament {
+  // end level 0
+  0% { 
+  transform: translate(-75px, 10px);
+  }
+    // start level 1
+  5% { 
+  transform: translate(-75px, 10px) rotate(0deg);
+  }
+  // end level 1
+  31% { 
+  transform: translate(90px, 10px) rotate(-9deg);
+  }
+  
+  // level 2
+  35% { 
+  transform: translate(90px, 5px) rotate(-9deg);
+  }
+  36% { 
+  transform: translate(70px, 5px) rotate(-7deg);
+  }
+  // end 2a
+  45% { 
+  transform: translate(-5px, 5px) rotate(0deg);
+  } 
+  
+   // start 2b 
+  49% { 
+  transform: translate(-6px, 5px);
+  }
+  // end 2b
+  60% { 
+  transform: translate(-62px, 5px);
+  }
+  // level 3
+  65% { 
+  transform: translate(-62px, 0px);
+  }
+  // start 3a
+  69% { 
+  transform: translate(-25px, 0px);
+  }  
+  //end 3a
+  76% {
+    transform: translate(-15px, 0px);
+  } 
+  //start 3b
+  78% { 
+  transform: translate(5px, 0px);
+  } 
+  // end 3b
+  85% { 
+  transform: translate(25px, 0px);
+  } 
+  // level 4 (home y)
+  90% { 
+  transform: translate(25px, -5px);
+  } 
+  // end (home x)
+  100% {
+  transform: translate(-100px, -5px);
+  }
+}
+
+
+@keyframes filament-follow {
+  0% { 
+  transform: translate(-73px, 4px)
+  }
+  5% { 
+  transform: translate(-73px, 4px) rotate(0deg);
+  }
+  31% { 
+  transform: translate(66px, 1px) rotate(-1.5deg);
+  }
+  35% { 
+  transform: translate(66px, 1px) rotate(-1.5deg);
+  }  
+  36% { 
+  transform: translate(40px, 4px) rotate(-1deg);
+  }  
+  45% { 
+  transform: translate(-4px, 4px) rotate(0deg);
+  } 
+  49% { 
+  transform: translate(-6px, 2px)
+  } 
+  60% { 
+  transform: translate(-62px, 2px)
+  }
+  65% { 
+  transform: translate(-62px, 2px)
+  }
+  69% { 
+  transform: translate(-25px, 2px)
+  }  
+  76% {
+  transform: translate(-15px, 2px)
+  } 
+  78% { 
+  transform: translate(5px, 2px)
+  } 
+  85% { 
+  transform: translate(25px, 2px)
+  } 
+  90% { 
+  transform: translate(25px, 2px)
+  } 
+  100% {
+  transform: translate(-100px, 2px)
+  }
+}
+
+@keyframes print-layer-1 {
+  0% {
+    transform: translate(-120px,0px); 
+    stroke-dashoffset: 118;
+    stroke: rgba(45,171,222,255);
+  }
+  5% {
+    transform: translate(-120px,0px); 
+    stroke-dashoffset: 118;
+    stroke: rgba(45,171,222,255);
+  }
+  29% {
+    stroke: rgba(45,171,222,255);
+  }
+  30% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 5;
+    stroke: rgba(45,171,222,0);
+  }
+  100% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 0;
+    stroke: rgba(45,171,222,0);
+  }
+}
+@keyframes layer-1-printed {
+  0% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -118;
+  }
+  10% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -118;
+  }
+  25% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -50;
+  }
+  30% {
+   stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  }
+  100% {
+   stroke: rgba(45,171,222,255);
+   stroke-dashoffset: 0;
+  }
+}
+
+@keyframes print-2a {
+  0% {
+    transform: translate(50px,0px); 
+    stroke-dashoffset: 47;
+    stroke: rgba(45,171,222,0);
+  }
+  35% {
+    transform: translate(50px,0px); 
+    stroke-dashoffset: 47;
+    stroke: rgba(45,171,222,255);
+  }
+  44% {
+    stroke: rgba(45,171,222,255);
+  }
+  45% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 0;
+    stroke: rgba(45,171,222,0);
+  }
+  100% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 0;
+    stroke: rgba(45,171,222,0);
+  }
+}
+
+@keyframes layer-2a-printed {
+  0% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -48;
+  }
+  35% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -48;
+  }
+  40% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -33;
+  }
+  45% {
+    stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  }
+  
+  100% {
+   stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes print-2b {
+  0% {
+    transform: translate(50px,0px); 
+    stroke-dashoffset: 47;
+    stroke: rgba(45,171,222,0);
+  }
+  50% {
+    transform: translate(50px,0px); 
+    stroke-dashoffset: 47;
+    stroke: rgba(45,171,222,255);
+  }
+  59% {
+    stroke: rgba(45,171,222,255);
+  }
+  60% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 0;
+    stroke: rgba(45,171,222,0);
+  }
+  100% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 0;
+    stroke: rgba(45,171,222,0);
+  }
+}
+
+@keyframes layer-2b-printed {
+  0% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -48;
+  }
+  50% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -48;
+  }
+  55% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: -33;
+  }
+  60% {
+    stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  } 
+  100% {
+   stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes print-3a {
+  0% {
+    transform: translate(-16px,0px); 
+    stroke-dashoffset: -16.098;
+    stroke: rgba(45,171,222,0);
+  }
+  64% {
+    transform: translate(-22px,0px); 
+    stroke-dashoffset: -16.098;
+    stroke: rgba(45,171,222,0);
+  }
+  65% {
+    transform: translate(-22px,0px); 
+    stroke-dashoffset: -16.098;
+    stroke: rgba(45,171,222,255);
+  }
+  69% {
+    stroke: rgba(45,171,222,255);
+        stroke-dashoffset: 0;
+    transform: translate(0px,0px);
+  }
+  70% {
+    transform: translate(0px,0px);
+    stroke: rgba(45,171,222,0);
+  }
+  100% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 0;
+    stroke: rgba(45,171,222,0);
+  }
+}
+
+@keyframes layer-3a-printed {
+  0% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: 15.78;
+  }
+  65% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: 15.78;
+  }
+  69% {
+    stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 9;
+  }
+  70% {
+    stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  } 
+  100% {
+   stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes print-3b {
+  0% {
+    transform: translate(-16px,0px); 
+    stroke-dashoffset: -16.098;
+    stroke: rgba(45,171,222,0);
+  }
+  76% {
+    transform: translate(-22px,0px); 
+    stroke-dashoffset: -16.098;
+    stroke: rgba(45,171,222,0);
+  }
+  77% {
+    transform: translate(-22px,0px); 
+    stroke-dashoffset: -16.098;
+    stroke: rgba(45,171,222,255);
+  }
+  83% {
+    stroke: rgba(45,171,222,255);
+        stroke-dashoffset: 0;
+    transform: translate(0px,0px);
+  }
+  84% {
+    transform: translate(0px,0px);
+    stroke: rgba(45,171,222,0);
+  }
+  100% {
+    transform: translate(0px,0px);
+    stroke-dashoffset: 0;
+    stroke: rgba(45,171,222,0);
+  }
+}
+
+@keyframes layer-3b-printed {
+  0% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: 15.78;
+  }
+  77% {
+    stroke: rgba(45,171,222,0);
+    stroke-dashoffset: 15.78;
+  }
+  83% {
+    stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 9;
+  }
+  84% {
+    stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  } 
+  100% {
+   stroke: rgba(45,171,222,255);
+    stroke-dashoffset: 0;
+  }
 }
