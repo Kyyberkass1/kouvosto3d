@@ -1,45 +1,74 @@
-<html>
-<body bgcolor="#602480">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 539.99999 539.99989" height="540" width="540" id="svg2">
-  <defs>
-<path id="clipshape" d="m1.5e2 1.2e2c-0.24-55 2.33e2 2.4 2.6e2 6.9-8.5 1.3-21 4.3-28 8.1-12 5.7-26 16-31 34h-2e2"/>
-   <clipPath id="filament-clip">
-     <use xlink:href="#clipshape" overflow="visible" />
-     </clipPath>
-  </defs>
-    <path d="M0 0h540v540H0z" id="path4" fill="#602480" stroke-width="5" stroke-miterlimit="5.667"/>
-    <path
-     stroke-miterlimit="10"
-     d="m 276.945,265.28338 c -0.30869,-32.72091 4.49007,-57.81876 12.55118,-77.06466"
-     class="bottom-filament"
-     style="fill:none;stroke:#2dabde;stroke-width:5.00000048;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:5.66666651;stroke-dasharray:none" />
-<g class=filament-group clip-path="url(#filament-clip)"> 
-<path
-     style="fill:none;stroke:#2dabde;stroke-width:5.00000048;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:5.66666651;stroke-dasharray:none"
-     class="top-filament"
-     d="m 292.37518,182.35151 c 23.86574,-48.18082 70.27183,-54.50451 102.10049,-57.06865 41.01263,-3.30401 105.0775,-0.0955 107.45434,-0.10098"
-     stroke-miterlimit="10" />
-</g>
-  <circle stroke-miterlimit="5.667" cx="401.944" cy="184.034" r="56.25" id="circle6" fill="#602480" stroke="#e9e9ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse stroke-miterlimit="5.667" ry="59.25" rx="61.25" cy="184.034" cx="401.944" id="ellipse8" fill="none" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<!--  <path stroke-miterlimit="5.667" d="M276.945 265.283c-1.25-132.5 81.25-140 124.985-140.1" class="filament" fill="none" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> -->
-  <circle stroke-miterlimit="5.667" cy="184.034" cx="401.944" r="24.076" id="circle12" fill="none" stroke="#e9e9ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path stroke-miterlimit="5.667" d="M148.125 193.75v237.5h-25v-262.5h293.75v262.5h-25v-237.5z" id="path14" fill="#602480" stroke="#e9e9ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M153.423 266.077H385.7" class="x-axis" fill="#a2adc2" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="5.667"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Printing Extravaganza</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: white;
+            font-family: Comic Sans MS, cursive, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px #000000;
+            animation: rainbow 3s infinite;
+        }
+        h2 {
+            font-size: 2.5em;
+            color: #ffcc00;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 10px 20px;
+            line-height: 1.8;
+        }
+        marquee {
+            color: #ff4500;
+            font-size: 1.2em;
+        }
+        @keyframes rainbow {
+            0% { color: red; }
+            25% { color: yellow; }
+            50% { color: green; }
+            75% { color: blue; }
+            100% { color: purple; }
+        }
+        .floating-image {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            animation: floaty 5s infinite;
+        }
+        @keyframes floaty {
+            0% { transform: rotate(0deg) translateX(0); }
+            50% { transform: rotate(360deg) translateX(50px); }
+            100% { transform: rotate(0deg) translateX(0); }
+        }
+        a {
+            font-size: 1.5em;
+            color: #00ff00;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the 3D Printing Universe!</h1>
+    <h2>Explore Pohjola Talo in 3D</h2>
+    <p>
+        3D printing is revolutionizing the way we create and innovate! From small prototypes to large architectural marvels,
+        like Pohjola Talo in Kouvola, the possibilities are endless. Using cutting-edge technology, we can bring your ideas to life!
+    </p>
+    <marquee>Check out our 3D animations and projects below!</marquee>
+    <img src="https://via.placeholder.com/200?text=3D+Printer" alt="3D Printer" class="floating-image" style="top: 50px; left: 20px;">
+    <img src="https://via.placeholder.com/200?text=Pohjola+Talo" alt="Pohjola Talo" class="floating-image" style="top: 150px; right: 20px;">
 
-  <path d="M212.428 313.603c-1.87 0-6.424.095-6.424.095-2.704 5.42-4.968 12.603-5.132 17.345-.142 4.086 1.034 8.983 1.903 12.308 2.89 11.072 10.258 18.35 10.258 18.35L270 418.784l56.968-57.083s7.367-7.28 10.257-18.35c.868-3.325 2.045-8.222 1.904-12.308-.165-4.717-2.406-11.848-5.09-17.258 0 0-4.586-.182-6.468-.182-38.38.085-76.763.04-115.145 0z" id="path20" fill="#2dabde" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>
-  <path d="M329.327 306.288H210.615" class="layer-1" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>  -->
-  <path d="M218.615 298.793h47.864" class="layer-2b" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>
-  <path d="M273.523 298.793h47.803" class="layer-2a" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>
-  <path d="M287.65 291.277l10.52.012 5.255.004" class="layer-3b" fill="#2dabde" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>  -->
- <path class="layer-1-printing" d="M325.88 302.27c.062 2.645-1.74 3.947-5.457 4.018H210.615" fill="none" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/> 
-<path class="layer-3a" d="M234.65 291.37l10.992.013 4.784.005" fill="#2dabde" stroke="#2dabde" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/> 
-<path d="M234.65 291.37l8.992.013c2.574.07 4.855-1.135 4.784-3.995" class="layer-3a-printing" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>
-  <path class="layer-3b-printing" d="M287.65 291.37l8.992.013c2.574.07 4.855-1.135 4.784-3.995" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/> 
-  <path class="layer-2a-printing" d="M277.062 294.775c-.062 2.645 1.738 3.947 5.456 4.018h38.81" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/>
-  <path class="layer-2b-printing" d="M222.215 294.775c-.063 2.645 1.738 3.947 5.456 4.018h38.81" fill="none" stroke="#ff0" stroke-width="5" stroke-linecap="round" stroke-miterlimit="5.667"/> 
-      
- <path d="M266.066 256.513v17.717l13.287 13.287 13.288-13.287v-17.717z" class="printhead" fill="#602480" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="5.667"/>
-</svg>
+    <p>
+        Interested in learning more about 3D printing or taking a virtual tour of Pohjola Talo in Kouvola?
+        <a href="https://www.visitkouvola.fi/en">Click here to explore!</a>
+    </p>
+    <p>Contact us at <a href="mailto:info@kouvosto3d.fi">info@kouvosto3d.fi</a></p>
 </body>
- </html>
+</html>
