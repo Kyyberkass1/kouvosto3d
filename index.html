@@ -1,108 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kouvosto3D - Pohjola Talo</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e0e7ff, #ffffff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-    #three-container {
-      width: 100%;
-      height: 100%;
-    }
-    .header {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: #333;
-    }
-    .header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    .header p {
-      margin: 5px 0 0;
-      font-size: 1rem;
-      color: #555;
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <h1>Kouvosto3D</h1>
-    <p>3D Printing Pohjola Talo from Kouvola</p>
-  </div>
-  <div id="three-container"></div>
+audio#audio
+	source(
+		src="https://raw.githubusercontent.com/ricardoolivaalonso/Codepen/master/Printer/printer.mp3",
+		type="audio/mpeg"
+	)
+#shadows.shadows
+	.shadow-1.face
+	.shadow-2.face
+	.shadow-3.face
+	.shadow-4.face
+#printer.printer
+	.inside-shadow
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r136/three.min.js"></script>
-  <script>
-    // Basic Setup
-    const container = document.getElementById('three-container');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    container.appendChild(renderer.domElement);
-
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-    scene.add(ambientLight);
-
-    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-    pointLight.position.set(10, 10, 10);
-    scene.add(pointLight);
-
-    // 3D Printer Model (Basic Placeholder)
-    const printerGeometry = new THREE.BoxGeometry(5, 3, 5);
-    const printerMaterial = new THREE.MeshStandardMaterial({ color: 0x333333 });
-    const printer = new THREE.Mesh(printerGeometry, printerMaterial);
-    scene.add(printer);
-    printer.position.set(0, 1, 0);
-
-    // Pohjola Talo Model (Placeholder)
-    const buildingGeometry = new THREE.BoxGeometry(2, 4, 2);
-    const buildingMaterial = new THREE.MeshStandardMaterial({ color: 0x5555ff });
-    const building = new THREE.Mesh(buildingGeometry, buildingMaterial);
-    scene.add(building);
-    building.position.set(0, -1, 0);
-    building.scale.set(1, 0, 1); // Initially "not printed"
-
-    // Animate Printing
-    let printingProgress = 0;
-    const animate = () => {
-      requestAnimationFrame(animate);
-      if (printingProgress < 1) {
-        printingProgress += 0.005; // Adjust speed as needed
-        building.scale.y = printingProgress;
-        building.position.y = -1 + (2 * printingProgress); // Adjust Y position as it "grows"
-      }
-      renderer.render(scene, camera);
-    };
-
-    // Camera Position
-    camera.position.z = 10;
-
-    // Start Animation
-    animate();
-
-    // Responsive Resize
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
-</body>
-</html>
+	#paper-shadow.paper-shadow.face
+	#paper.paper 
+	//-----------------------    
+	.at
+		.at__front.face 
+		.at__back.face 
+		.at__right.face 
+		.at__left.face 
+		.at__top.face 
+		.at__bottom.face 
+	.ab
+		.ab__front.face 
+		.ab__back.face 
+		.ab__right.face 
+		.ab__left.face 
+		.ab__top.face 
+		.ab__bottom.face 
+	.am
+		.am__front.face 
+		.am__back.face 
+		.am__right.face 
+		.am__left.face 
+		.am__top.face 
+		.am__bottom.face 
+	//-----------------------    
+	.bl
+		.bl__front.face 
+		.bl__back.face 
+		.bl__right.face 
+		.bl__left.face 
+		.bl__top.face 
+		.bl__bottom.face 
+	.br
+		.br__front.face 
+		.br__back.face 
+		.br__right.face 
+		.br__left.face 
+		.br__top.face 
+		.br__bottom.face 
+	.bb
+		.bb__front.face 
+		.bb__back.face 
+		.bb__right.face 
+		.bb__left.face 
+		.bb__top.face 
+		.bb__bottom.face 
+	.bt
+		.bt__front.face 
+		.bt__back.face 
+		.bt__right.face 
+		.bt__left.face 
+		.bt__top.face 
+		.bt__bottom.face 
+	//-----------------------    
+	.cl
+		.cl__front.face 
+		.cl__back.face 
+		.cl__right.face 
+		.cl__left.face 
+		.cl__top.face 
+		.cl__bottom.face 
+	.cr
+		.cr__front.face 
+		.cr__back.face 
+		.cr__right.face 
+		.cr__left.face 
+		.cr__top.face 
+		.cr__bottom.face 
+	.cm
+		.cm__front.face 
+			.screen
+				#text.screen__text printing
+			.buttons
+				.button.button--cta
+					.button__front.face 
+					.button__back.face 
+					.button__right.face 
+					.button__left.face 
+					.button__top.face 
+					.button__bottom.face 
+				.button
+					.button__front.face 
+					.button__back.face 
+					.button__right.face 
+					.button__left.face 
+					.button__top.face 
+					.button__bottom.face 
+				.button
+					.button__front.face 
+					.button__back.face 
+					.button__right.face 
+					.button__left.face 
+					.button__top.face 
+					.button__bottom.face 
+				.button
+					.button__front.face 
+					.button__back.face 
+					.button__right.face 
+					.button__left.face 
+					.button__top.face 
+					.button__bottom.face 
+				.button.button--cta
+					.button__front.face 
+					.button__back.face 
+					.button__right.face 
+					.button__left.face 
+					.button__top.face 
+					.button__bottom.face 
+				#button.large
+					.large__front.face 
+					.large__back.face 
+					.large__right.face 
+					.large__left.face 
+					.large__top.face start
+					.large__bottom.face 
+		.cm__back.face 
+		.cm__right.face 
+		.cm__left.face 
+		.cm__top.face 
+		.cm__bottom.face 
+	.ct
+		.ct__front.face 
+		.ct__back.face 
+		.ct__right.face 
+		.ct__left.face 
+		.ct__top.face 
+		.ct__bottom.face 
+	.cb
+		.cb__front.face 
+		.cb__back.face 
+		.cb__right.face 
+		.cb__left.face 
+		.cb__top.face 
+		.cb__bottom.face 
+	.cbl
+		.cbl__front.face 
+		.cbl__back.face 
+		.cbl__right.face 
+		.cbl__left.face 
+		.cbl__top.face 
+		.cbl__bottom.face 
+	.cbr
+		.cbr__front.face 
+		.cbr__back.face 
+		.cbr__right.face 
+		.cbr__left.face 
+		.cbr__top.face 
+		.cbr__bottom.face
