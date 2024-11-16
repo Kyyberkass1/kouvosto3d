@@ -3,106 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kouvola Memes - Ultimate Retro Vibes</title>
+  <title>Kouvola - The City of Gray</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #ff66cc, #33ccff, #ffff33);
-      color: #000;
       font-family: Comic Sans MS, Arial, sans-serif;
-      text-align: center;
+      background: linear-gradient(90deg, #444, #555, #666);
+      color: #eee;
       margin: 0;
       padding: 0;
     }
+
     h1 {
+      text-align: center;
       font-size: 3em;
-      color: #ff0000;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px #000000;
-      animation: rainbow 3s infinite;
+      color: #ddd;
+      margin: 20px 0;
     }
-    @keyframes rainbow {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
-    marquee {
-      font-size: 1.5em;
-      color: #ff00ff;
-      background-color: #000;
-      padding: 10px;
-      border: 3px dashed #ff0000;
-      margin-bottom: 20px;
-    }
+
     .container {
-      margin: 20px auto;
       width: 90%;
-      max-width: 800px;
-      border: 5px solid #ff00ff;
+      margin: 20px auto;
+      background: #333;
       padding: 20px;
-      background-color: #fff;
+      border: 2px solid #555;
       border-radius: 10px;
     }
+
     .meme {
-      margin-bottom: 20px;
+      margin: 20px 0;
+      text-align: center;
     }
+
     .meme img {
-      border: 5px solid #ff9900;
-      border-radius: 15px;
-      max-width: 100%;
+      max-width: 90%;
+      border: 3px solid #444;
+      border-radius: 10px;
     }
-    .rainbow-border {
-      padding: 10px;
-      border: 5px dashed;
-      animation: borderRainbow 5s infinite linear;
+
+    .meme p {
+      color: #aaa;
+      font-style: italic;
     }
-    @keyframes borderRainbow {
-      0% { border-color: red; }
-      16% { border-color: orange; }
-      33% { border-color: yellow; }
-      50% { border-color: green; }
-      66% { border-color: blue; }
-      83% { border-color: indigo; }
-      100% { border-color: violet; }
-    }
-    .footer {
-      margin-top: 30px;
-      font-size: 0.8em;
-      background-color: #000;
+
+    /* Persistent Pop-ups */
+    .popup {
+      position: fixed;
+      background: rgba(0, 0, 0, 0.9);
       color: #fff;
-      padding: 10px;
+      width: 300px;
+      padding: 20px;
+      border: 2px solid #777;
+      z-index: 1000;
+      display: none;
+      text-align: center;
+    }
+
+    .popup h3 {
+      margin: 0 0 10px 0;
+    }
+
+    .popup button {
+      background: #777;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background: #555;
     }
   </style>
 </head>
 <body>
-  <h1>✨ Kouvola Memes ✨</h1>
-  <marquee>Welcome to the most epic Kouvola memes site EVER! Hold on to your hats!</marquee>
+  <h1>Welcome to Kouvola</h1>
 
   <div class="container">
-    <h2>🌈 The Color Palette of Kouvola</h2>
-    <div class="meme rainbow-border">
-      <img src="https://tse2.mm.bing.net/th?id=OIP.EfazNu4tawK0Kem25npKLAHaKe&pid=Api" alt="Kouvola Color Palette Meme">
-      <p>Gray, grayer, grayest — the essence of Kouvola!</p>
+    <h2>Explore Kouvola</h2>
+    <p>The city where gray skies meet industrial charm.</p>
+
+    <h2>Memes About Kouvola</h2>
+
+    <div class="meme">
+      <img src="https://preview.redd.it/4dncmz7i0ut51.png?auto=webp&s=fc9822740c3426ffc1f90deb9318244cb883cc1e" alt="Kouvola Color Palette">
+      <p>"Kouvola's color palette: Five shades of gray, and no escape."</p>
     </div>
 
-    <h2>💔 Kouvola's Existential Melancholy</h2>
-    <div class="meme rainbow-border">
-      <img src="https://tse4.mm.bing.net/th?id=OIP.Iym_ykaoIffM_HJuv3MpuwHaFH&pid=Api" alt="Kouvola Depression Meme">
-      <p>"It’s not sad, it’s just... industrially unique."</p>
+    <div class="meme">
+      <img src="https://img.ilcdn.fi/se0ZXVYorHmXxtvPnaJt6hUP-fU=/full-fit-in/920x0/img-s3.ilcdn.fi/944a2cc5e05096cf57f84c46f11115fbf5d58fc188fd7d865dcd000d3f5e586f.jpg" alt="Everyday Life in Kouvola">
+      <p>"Nää ihmiset elää näin joka päivä."</p>
     </div>
 
-    <h2>☢️ Finland's Chernobyl</h2>
-    <div class="meme rainbow-border">
-      <img src="https://tse1.mm.bing.net/th?id=OIP.mCdeeXB-6-ai89nGf_nMPQHaG3&pid=Api" alt="Kouvola as Chernobyl Meme">
-      <p>It's not radioactive, but it feels like it could be!</p>
+    <div class="meme">
+      <img src="https://scontent-hel3-1.xx.fbcdn.net/v/t39.30808-6/458507728_2876385072514348_5146480815425404386_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=0b6b33&_nc_ohc=k4Ccoph3zqgQ7kNvgFf5qoV&_nc_zt=23&_nc_ht=scontent-hel3-1.xx&_nc_gid=AJM5Qgs7na1fSqSAq3toEkl&oh=00_AYDnMdc09XWSBnINvRYREwzlJBtGW1hUxfsQ_s3334Dcgg&oe=673EF5FD" alt="Kouvola Monaco Meme">
+      <p>"Lehtomäki on kuin Kouvolan Monaco: Kukaan ei puhu suomea, maksa veroja eikä käy töissä."</p>
+    </div>
+
+    <div class="meme">
+      <img src="https://i.redd.it/hn971c51rqx71.jpg" alt="Chernobyl vs. Kouvola">
+      <p>"Chernobyl and Kouvola: Spot the difference."</p>
     </div>
   </div>
 
-  <marquee direction="right">🔥 Kouvola is on fire! (Not literally, we hope!) 🔥</marquee>
-
-  <div class="footer">
-    <p>&copy; 2024 Kouvola Memes. Powered by endless rainbows and existential humor!</p>
-    <p>Visit us again for more memes!</p>
+  <!-- Pop-ups -->
+  <div class="popup" id="popup1" style="top: 10%; left: 10%;">
+    <h3>Did You Know?</h3>
+    <p>Kouvola has perfected the art of gray skies.</p>
+    <button onclick="closePopup('popup1')">Close</button>
   </div>
+
+  <div class="popup" id="popup2" style="top: 20%; left: 50%;">
+    <h3>Fun Fact</h3>
+    <p>The brightest thing in Kouvola is its memes.</p>
+    <button onclick="closePopup('popup2')">Close</button>
+  </div>
+
+  <div class="popup" id="popup3" style="top: 40%; right: 10%;">
+    <h3>Breaking News</h3>
+    <p>Kouvola's train station now offers free existential crises.</p>
+    <button onclick="closePopup('popup3')">Close</button>
+  </div>
+
+  <!-- Script -->
+  <script>
+    // Show persistent pop-ups
+    const popups = document.querySelectorAll('.popup');
+    let delay = 0;
+
+    popups.forEach((popup, index) => {
+      setTimeout(() => {
+        popup.style.display = 'block';
+      }, delay);
+      delay += 2000; // 2-second interval
+    });
+
+    // Close pop-ups
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
 </body>
 </html>
