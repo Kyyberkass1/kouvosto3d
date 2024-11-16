@@ -249,8 +249,8 @@
       const popup = document.getElementById(`popup${id}`);
       const randomIndex = Math.floor(Math.random() * prompts.length);
       document.getElementById(`popup-text${id}`).innerText = prompts[randomIndex];
-      const randomTop = Math.random() *60 + 20; // Random position on screen
-      const randomLeft = Math.random() * 60 + 20;
+      const randomTop = Math.random() *60 + 30; // Random position on screen
+      const randomLeft = Math.random() * 60 + 10;
       popup.style.top = `${randomTop}%`;
       popup.style.left = `${randomLeft}%`;
       popup.style.display = "block";
