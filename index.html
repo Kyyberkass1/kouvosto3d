@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kouvosto3D - Pohjola Talo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e0e7ff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #three-container {
+      width: 100%;
+      height: 100%;
+    }
+    .header {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: #333;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .header p {
+      margin: 5px 0 0;
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Kouvosto3D</h1>
+    <p>3D Printing Pohjola Talo from Kouvola</p>
+  </div>
+  <div id="three-container"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r136/three.min.js"></script>
+  <script>
+    // Basic Setup
+    const container = document.getElementById('three-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    pointLight.position.set(10, 10, 10);
+    scene.add(pointLight);
+
+    // 3D Printer Model (Basic Placeholder)
+    const printerGeometry = new THREE.BoxGeometry(5, 3, 5);
+    const printerMaterial = new THREE.MeshStandardMaterial({ color: 0x333333 });
+    const printer = new THREE.Mesh(printerGeometry, printerMaterial);
+    scene.add(printer);
+    printer.position.set(0, 1, 0);
+
+    // Pohjola Talo Model (Placeholder)
+    const buildingGeometry = new THREE.BoxGeometry(2, 4, 2);
+    const buildingMaterial = new THREE.MeshStandardMaterial({ color: 0x5555ff });
+    const building = new THREE.Mesh(buildingGeometry, buildingMaterial);
+    scene.add(building);
+    building.position.set(0, -1, 0);
+    building.scale.set(1, 0, 1); // Initially "not printed"
+
+    // Animate Printing
+    let printingProgress = 0;
+    const animate = () => {
+      requestAnimationFrame(animate);
+      if (printingProgress < 1) {
+        printingProgress += 0.005; // Adjust speed as needed
+        building.scale.y = printingProgress;
+        building.position.y = -1 + (2 * printingProgress); // Adjust Y position as it "grows"
+      }
+      renderer.render(scene, camera);
+    };
+
+    // Camera Position
+    camera.position.z = 10;
+
+    // Start Animation
+    animate();
+
+    // Responsive Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
