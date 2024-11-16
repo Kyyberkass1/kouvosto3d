@@ -115,27 +115,27 @@
 
   <!-- Popups -->
   <div class="popup" id="popup1">
-    <h3>Did You Know?</h3>
+    <h3>Did You Know about Kouvola?</h3>
     <p id="popup-text1"></p>
     <button onclick="closePopup(1)">Close</button>
   </div>
   <div class="popup" id="popup2">
-    <h3>Fun Fact</h3>
+    <h3>Fun Fact about Kouvola </h3>
     <p id="popup-text2"></p>
     <button onclick="closePopup(2)">Close</button>
   </div>
   <div class="popup" id="popup3">
-    <h3>Breaking News</h3>
+    <h3>Kouvola:Breaking News</h3>
     <p id="popup-text3"></p>
     <button onclick="closePopup(3)">Close</button>
   </div>
   <div class="popup" id="popup4">
-    <h3>Trivia</h3>
+    <h3>Kouvola-Trivia</h3>
     <p id="popup-text4"></p>
     <button onclick="closePopup(4)">Close</button>
   </div>
   <div class="popup" id="popup5">
-    <h3>Fact</h3>
+    <h3>Kouvola-Fact</h3>
     <p id="popup-text5"></p>
     <button onclick="closePopup(5)">Close</button>
   </div>
@@ -249,8 +249,8 @@
       const popup = document.getElementById(`popup${id}`);
       const randomIndex = Math.floor(Math.random() * prompts.length);
       document.getElementById(`popup-text${id}`).innerText = prompts[randomIndex];
-      const randomTop = Math.random() * 20 + 20; // Random position on screen
-      const randomLeft = Math.random() * 20 + 20;
+      const randomTop = Math.random() * 1 + 50; // Random position on screen
+      const randomLeft = Math.random() * 1 + 50;
       popup.style.top = `${randomTop}%`;
       popup.style.left = `${randomLeft}%`;
       popup.style.display = "block";
