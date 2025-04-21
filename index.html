@@ -1,311 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kouvola - The City of Gray</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kouvosto3d - Räätälöidyt 3D-tulosteet</title>
   <style>
     body {
-      font-family: Comic Sans MS, Arial, sans-serif;
-      background: linear-gradient(90deg, #444, #555, #666);
-      color: #eee;
+      font-family: Arial, sans-serif;
+      background-color:rgb(118, 118, 118);
+      color: #333;
       margin: 0;
       padding: 0;
     }
-
-    h1 {
-      text-align: center;
-      font-size: 3em;
-      color: #ddd;
-      margin: 20px 0;
-    }
-
-    .container {
-      width: 90%;
-      margin: 20px auto;
-      background: #333;
-      padding: 20px;
-      border: 2px solid #555;
-      border-radius: 10px;
-    }
-
-    .meme {
-      margin: 20px 0;
+    header {
+      background-color: #222;
+      color: white;
+      padding: 1rem;
       text-align: center;
     }
-
-    .meme img {
-      max-width: 90%;
-      border: 3px solid #444;
-      border-radius: 10px;
-    }
-
-    .meme p {
-      color: #aaa;
-      font-style: italic;
-    }
-
-    /* Popup styling */
-    .popup {
-      position: fixed;
-      background: rgba(0, 0, 0, 0.9);
-      color: #fff;
-      width: 300px;
-      padding: 20px;
-      border: 2px solid #777;
-      z-index: 1000;
-      display: none;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
       border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    .popup h3 {
-      font-size: 1.2em;
-      margin: 0 0 10px 0;
+    h1, h2 {
+      margin-top: 0;
     }
-
-    .popup p {
-      font-size: 0.9em;
+    .gallery, .filament-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
-
-    .popup button {
-      background: #777;
-      color: #fff;
+    .gallery img, .filament-gallery div {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .filament-sample {
+      background: #eee;
+      padding: 1rem;
+      text-align: center;
+    }
+    .filament-color {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 auto 0.5rem;
+      border: 1px solid #ccc;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 1rem;
+    }
+    input, select, textarea {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      background-color: #28a745;
+      color: white;
       border: none;
-      padding: 5px 10px;
-      margin-top: 10px;
+      font-size: 1rem;
       cursor: pointer;
     }
-
-    .popup button:hover {
-      background: #555;
+    button:hover {
+      background-color: #218838;
     }
-    a:link {
-  color: RED;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:visited {
-  color: pink;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #222;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    /* Pop-up tyyli */
+    #modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+    #modalend {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+
+
+    #modalContent {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    #modalContent span {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 30px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    #modalContent span:hover {
+      color: #ff0000;
+    }
   </style>
 </head>
 <body>
-  <h1>Welcome to Kouvostoliitto</h1>
+  <header>
+    <h1>Kouvosto3d</h1>
+    <p>Räätälöidyt 3D-tulosteet – Valmistettu ylpeästi Kouvolassa</p>
+  </header>
+  <main>
+    <!--
+    <h2>Portfolio</h2>
+    <div class="gallery">
+      <img src="images/print1.jpg" alt="Tulostettu esine 1">
+      <img src="images/print2.jpg" alt="Tulostettu esine 2">
+      <img src="images/print3.jpg" alt="Tulostettu esine 3">
+    </div>
+    -->
 
-  <div class="container">
-    <h2>Experience Kouvola</h2>
-    <p>The city where dreams go to die.</p>
-    <p>This website is powered by upcoming 3d printing/parts shop</p>
-    <p>Support this project directly at: <a href="https://buymeacoffee.com/kouvosto3d" target="_blank">Buy Me a Coffee</a></p>
+    <h2>Tieto meistä </h2>
+    <p>Tervetuloa Kouvosto3d:lle! Tarjoamme yksilöllisiä 3D-tulostuspalveluita. Lähetä meille suunnitelmasi, valitse haluamasi tulostusmateriaali, ja me hoidamme loput – hinta-arviosta toimitukseen. Tarjoamme palvelut yrityksille kuin myös yksityishenkilöille</p>
+    <p>Kouvosto3d on sivutoimi, vähän niinkuin vaarin räätälöidyt puutyölelut lapsille, mutta hieman nykyaikaisemmella mallilla. </p>
+    <p>Tulostamme ja toimitamme viraaleista meemi/fidget tulosteita aina teollisiin prototyyppeihin asti!  </p>
+    <p><strong>Tarjolla myös moniväritulostus!</strong> Kirjoita pyyntöön tieto, jos haluat samaan tulosteeseen erivärejä. (Max. 4 eriväriä toistaiseksi) </p>
+    <p><strong>Tulosteen suurin sallittu koko</strong> Tulosteen pitää mahtua <strong>256mm*256mm*256mm</strong> alueen sisään, koska tulostin ei vain yksinkertaisesti voi tulostaa itseään suuremmalle alueelle. Tulosteet/osat voidaan yhdistää tulostuksen jälkeen suuremmaksi kokonaisuudeksi kumminkin, näin voidaan luoda vaikka metrin pituinen miekka!</p>
+    <h4><a href="javascript:void(0);" onclick="openModal('modal')">Materiaaliopas - Lyhyt oppimäärä</a></h4>
+
+    <!-- Pop-up ikkuna -->
+    <div id="modal">
+      <div id="modalContent">
+        <span onclick="closeModal('modal')">×</span>
+            <div class="material">
+                <h2>🧵 PLA ("perusmuovi")</h2>
+                <p><strong>Hyödyt:</strong></p>
+                <ul>
+                <li><strong>Tarkka ja siisti tulostusjälki</strong> – sopii hyvin yksityiskohtaisiin ja esteettisiin tulosteisiin. Esimerkiski figuureihin tai koristeisiin</li>
+                <li><strong>Ympäristöystävällinen</strong> – biopohjainen ja biohajoava materiaali.</li>
+                <li><strong>Helppo tulostaa</strong> – Nopea prototyyppien valmistus ja rajottamat mahdollisuudet tulosteissa.</li>
+                </ul>
+                <p><strong>Haitat:</strong></p>
+                <ul>
+                <li><strong>Heikko lämmönkesto</strong> – pehmenee noin 60 °C lämpötilassa.</li>
+                <li><strong>Hauraus</strong> – ei kestä hyvin mekaanista rasitusta tai iskuja.</li>
+                <li><strong>Huono säänkesto</strong> – ei sovellu pitkäaikaiseen ulkokäyttöön.</li>
+                </ul>
+            </div>
+            
+            <div class="material">
+                <h2>🔧 PETG (Kestävä muovi)</h2>
+                <p><strong>Hyödyt:</strong></p>
+                <ul>
+                <li><strong>Kestävä ja joustava</strong> – hyvä iskunkestävyys ja mekaaninen lujuus. Sopii esimerkiksi käyttöesineisiin</li>
+                <li><strong>Hyvä sään- ja kemikaalienkesto</strong> – soveltuu ulkokäyttöön ja vaativiin olosuhteisiin. Tarvitseeko jokin esimerkiski ulos kolon tai pienen varaosan </li>
+                <li><strong>Vähäinen kutistuminen</strong> – tulosteet säilyttävät muotonsa hyvin.</li>
+                </ul>
+                <p><strong>Haitat:</strong></p>
+                <ul>
+                <li><strong>Korkeampi hinta</strong> – kalliimpi kuin PLA.</li>
+                <li><strong>Vähemmän ympäristöystävällinen</strong> – ei biohajoava, mutta kierrätettävä.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2>Hetivalmiit tulostusmateriaalit</h2>
+    <div class="filament-gallery">
+      <div class="filament-sample">
+        <div class="filament-color" style="background-color: black;"></div>
+        <p>PLA - Musta</p>
+      </div>
+      <div class="filament-sample">
+        <div class="filament-color" style="background-color: white;"></div>
+        <p>PLA - Valkoinen</p>
+      </div>
+      <div class="filament-sample">
+        <div class="filament-color" style="background-color: black;"></div>
+        <p>PETG - Musta</p>
+      </div>
+      <div class="filament-sample">
+        <div class="filament-color" style="background-color: white;"></div>
+        <p>Omavalinta</p>
+      </div>
+    </div>
+
+    <h2>Pyydä hinta-arvio</h2>
+    <form action="https://formspree.io/f/mblorkny" method="POST" enctype="multipart/form-data">
+      <label for="name">Nimesi</label>
+      <input type="text" name="name" id="name" required />
+
+      <label for="email">Sähköpostiosoitteesi</label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="filament">Toivottu filamentti (kirjoita yllä olevasta vaihtoehdoista tai omavalinta)</label>
+      <input type="text" name="filament" id="filament" required />
+
+      <label for="details">Tulosteen kuvaus</label>
+      <textarea name="details" id="details" rows="5" required></textarea>
+
+      <label for="file">Lähetä tulostustiedosto (STL/OBJ)</label>
+      <input type="file" name="file" id="file" accept=".stl,.obj" />
+
+      <button type="submit">Lähetä pyyntö</button>
+    </form>
+
+    <p></p>
+    <h2>Tilauksesta</h2>
+    <p>Kaikkiin pyyntöihin pyritään vastaamaan 3 työpäivän sisällä vastaanottamisesta.</p>
+    <p>Voit myös lähettää pyynnön suoraan sähköpostiin, lomakkeen täytön sijaan. </p>
 
 
+    <h4><a href="javascript:void(0);" onclick="openModal('modalend')">Yritystiedot ja toimitusehdot</a></h4>
 
+    <!-- Pop-up ikkuna -->
+    <div id="modalend">
+      <div id="modalContent">
+        <span onclick="closeModal('modalend')">×</span>
+        <h2>Yritystiedot</h2>
+        <p><strong>Yrityksen nimi:</strong> Kouvosto3d</p>
+        <p><strong>Y-tunnus:</strong> 3493670-4</p>
+        <p><strong>Postiosoite:</strong> Valvomontie 5, 45100 Kouvola</p>
+        <p><strong>Puhelinnumero:</strong> 040 123 4567</p>
+        <p><strong>Sähköposti:</strong> kauppa@kouvosto3d.fi</p>
+        <p><strong>Laskutus:</strong> OP Kevytyrittäjä -palvelun kautta sähköpostitse</p>
+
+        <h2>Toimitusehdot</h2>
+        <p><strong>Toimitusaika:</strong> Tuotteet valmistetaan tilauksesta ja toimitetaan postitse. Toimitusaika on noin 5–10 arkipäivää tilauksen vahvistamisesta, jos materiaalia tai muita tarvikkeita ei tarvitse erikseen tilata.</p>
+        <p><strong>Palautusoikeus:</strong> Koska tuotteet valmistetaan asiakkaan toiveiden mukaan, niillä ei ole palautusoikeutta, ellei tuotteessa ole valmistusvirhettä.</p>
+        <p><strong>Maksutavat:</strong> Laskutus tapahtuu OP Kevytyrittäjä -palvelun kautta. Lasku tulee sähköpostilla.</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Kouvosto3d - Kaikki oikeudet pidätetään</p>
+    <p>Sähköposti: <a href="mailto:kauppa@kouvosto3d.fi" style="color: #ccc;">kauppa@kouvosto3d.fi</a></p>
+  </footer>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
 
     
-    <h2>Highlights on Kouvostoliitto:</h2>
 
-    <div class="meme">
-      <img src="https://preview.redd.it/4dncmz7i0ut51.png?auto=webp&s=fc9822740c3426ffc1f90deb9318244cb883cc1e" alt="Kouvola Color Palette">
-      <p>"Kouvola's official colors: gray, grayer, and 'why bother?'"</p>
-    </div>
-
-    <div class="meme">
-      <img src="https://img.ilcdn.fi/se0ZXVYorHmXxtvPnaJt6hUP-fU=/full-fit-in/920x0/img-s3.ilcdn.fi/944a2cc5e05096cf57f84c46f11115fbf5d58fc188fd7d865dcd000d3f5e586f.jpg" alt="Everyday Life in Kouvola">
-      <p>"Nää ihmiset elää näin joka päivä."</p>
-    </div>
-
-    <div class="meme">
-      <img src="https://i.imgur.com/pulDl7y.jpeg" alt="Kouvola Monaco Meme">
-      <p>"Lehtomäki on kuin Kouvolan Monaco: Kukaan ei puhu suomea, maksa veroja eikä käy töissä."</p>
-    </div>
-
-    <div class="meme">
-      <img src="https://i.redd.it/hn971c51rqx71.jpg" alt="Chernobyl vs. Kouvola">
-      <p>"Chernobyl and Kouvola: Spot the difference."</p>
-    </div>
-  </div>
-
-  <!-- Popups -->
-  <div class="popup" id="popup1">
-    <h3>Did You Know about Kouvola?</h3>
-    <p id="popup-text1"></p>
-    <button onclick="closePopup(1)">Close</button>
-  </div>
-  <div class="popup" id="popup2">
-    <h3>Fun Fact about Kouvola </h3>
-    <p id="popup-text2"></p>
-    <button onclick="closePopup(2)">Close</button>
-  </div>
-  <div class="popup" id="popup3">
-    <h3>Kouvola:Breaking News</h3>
-    <p id="popup-text3"></p>
-    <button onclick="closePopup(3)">Close</button>
-  </div>
-  <div class="popup" id="popup4">
-    <h3>Kouvola-Trivia</h3>
-    <p id="popup-text4"></p>
-    <button onclick="closePopup(4)">Close</button>
-  </div>
-  <div class="popup" id="popup5">
-    <h3>Kouvola-Fact</h3>
-    <p id="popup-text5"></p>
-    <button onclick="closePopup(5)">Close</button>
-  </div>
-
-  <!-- Script -->
-  <script>
-const prompts = [
-  "Kouvolassa on yli 256 harmaan sävyä!",
-  "Kouvolan rautatieasema on jokaisen pilvisen päivän kohokohta.",
-  "Kouvola on Suomen melankolian pääkaupunki.",
-  "Kouvolan sää heijastaa sen tunnelmaa: pilvinen.",
-  "Kouvola: 50 % pilviä, 50 % huumoria, 0 % aurinkoa.",
-  "Kouvolan väripaletti on 'teollinen tyylikkyys.'",
-  "Kouvolassa jopa kyyhkyset kärsivät eksistentiaalisista kriiseistä.",
-  "Voittaminen on valinnaista, paikalle saapuminen pakollista.",
-  "Kouvolan jääkiekkojoukkue tekee häviämisestä taidetta.",
-  "Kouvola: missä betoniset unelmat kohtaavat pilviset todellisuudet.",
-  "Rautatieaseman valot loistavat kirkkaammin kuin tulevaisuus.",
-  "Kouvolassa sade ei ole ennuste, vaan elämäntapa.",
-  "Kouvolassa jokainen vuodenaika tuntuu marraskuulta.",
-  "Kouvola: missä optimismi pitää pysyvää kahvitaukoa.",
-  "Täydellinen paikka dystooppisen romaanin kirjoittamiseen: Kouvola.",
-  "Kouvolan horisontti: harmaan sävyjen viimeinen rajapyykki.",
-  "Kouvolassa jopa graffitit tuntuvat melankolisilta.",
-  "Jääkiekko Kouvolassa: enemmän sydämellä kuin taidolla.",
-  "Kyyhkyset ovat Kouvolan katujen todellisia MVP:itä.",
-  "Kouvolassa jopa aurinko ilmoittaa olevansa sairas.",
-  "Kouvolan rautatieasema: betonibrutalismin paratiisi.",
-  "Kouvola: missä sateenvarjot ovat tärkeämpiä kuin hymyt.",
-  "Pilvet ovat Kouvolassa pysyviä asukkaita.",
-  "Kouvolassa sade on niin säännöllistä, että se tuntuu henkilökohtaiselta.",
-  "Jääkiekkoillat Kouvolassa: enemmän draamaa katsomossa kuin jäällä.",
-  "Kouvolan harmaat taivaat ansaitsevat oman runonsa.",
-  "Kouvolassa unelmat sulavat hitaammin kuin jäähalli.",
-  "Kouvola: missä onni käy kylässä, mutta harvoin jää.",
-  "Täydellinen tausta mustavalkoiselle kuvalle: Kouvola.",
-  "Kouvolan kyyhkyset haaveilevat paremmista kaupungeista.",
-  "Kouvolan jääkiekkojoukkue määrittelee uudelleen uskollisuuden joka kausi.",
-  "Betonia niin paljon, että se ansaitsee oman esitteensä.",
-  "Kouvolassa jopa toivo on harmaampaa kuin taivas.",
-  "Kouvola: missä pilvikatto on elämäntapa.",
-  "Sadetakit eivät ole muotia, vaan selviytymiskeino.",
-  "Kouvola: missä jopa graffitit tarvitsevat sadetakin.",
-  "Jääkiekkoillat Kouvolassa: enemmän kärsivällisyyttä kuin pisteitä.",
-  "Kouvola: missä pilvet ovat horisontin todelliset tähdet.",
-  "Keväällä Kouvolan kuopat toimivat uima-altaina.",
-  "Kouvolan kyyhkyset: hiljaisia melankolian todistajia.",
-  "Kahvi Kouvolassa on yhtä katkeraa kuin jääkiekkotappiot.",
-  "Kouvola: missä kunnianhimo ja sää ovat yhtä harmaita.",
-  "Jäähallin kylmyys on ainoa asia, joka kilpailee yleisön intohimon kanssa.",
-  "Kouvola: jokainen kuukausi tuntuu marraskuulta.",
-  "Kouvolassa jopa auringonpaiste näyttää väsyneeltä.",
-  "Sade on Kouvolan ainoa pysyvä asia.",
-  "Kouvolan jääkiekkofanit määrittelevät uudelleen kärsivällisyyden.",
-  "Kouvola: kosteiden sukkien epävirallinen pääkaupunki.",
-  "Kouvola: missä pilvet ovat kaupungin epävirallinen maskotti.",
-  "Kouvolassa jopa kyyhkyset näyttävät hieman melankolisilta.",
-  "Jääkiekkoillat Kouvolassa: jännitystä, mutta ei pisteiden vuoksi.",
-  "Kouvola: paikka, jossa betoni kohtaa pilviset taivaat.",
-  "Kouvolassa jopa rautatieasema tuntuu eksistentiaaliselta.",
-  "Rautatieasema, jossa kukaan ei ole koskaan ajoissa – edes juna.",
-  "Betonia niin paljon, että maan vetovoima tuntuu vahvemmalta.",
-  "Missä sade ei lopu, vaan ottaa välillä kahvitauon.",
-  "Jääkiekko-otteluissa voitot ovat vierailijoiden etuoikeus.",
-  "Pilvet ovat täällä enemmän paikallisia kuin asukkaat.",
-  "Graffitit kertovat surullisempia tarinoita kuin paikallislehdet.",
-  "Kaupunki, jossa harmaa on paitsi väri myös mielentila.",
-  "Aurinko saapuu Kouvolaan vain kartan kautta.",
-  "Betoniunelmia, jotka herättävät enemmän kysymyksiä kuin vastauksia.",
-  "Junat tulevat ja menevät, mutta Kouvola pysyy paikallaan.",
-  "Jääkiekkojoukkue, joka tekee toivosta vaikeasti tavoitettavaa.",
-  "Pilvet: kaupungin pysyvät vieraat ja luotettavimmat ystävät.",
-  "Täällä kyyhkyset ovat yhtä eksistentialistisia kuin kaupunkilaiset.",
-  "Yöelämä? Vain jos lasketaan kyyhkysten illanvietto.",
-  "Missä sääennuste on yhtä yllätyksetön kuin budjetti.",
-  "Rakennukset, jotka kertovat menneisyydestä enemmän kuin nykyisyydestä.",
-  "Betoniviidakko ilman viidakkoa, mutta paljon betonia.",
-  "Kaupunki, jossa sade on paikallisvaluutta.",
-  "Voittaminen jääkiekossa on täällä toissijaista – häviäminen taidetta.",
-  "Juna-asemalla tunnelmaa, joka saa jopa betonin näyttämään lämpimältä.",
-  "Sadetakkien myynti täällä on vakaampaa kuin asuntomarkkinat.",
-  "Missä pilvet kertovat enemmän tarinoita kuin ihmiset.",
-  "Joukkue, joka muistuttaa meitä aina siitä, että kaikki on suhteellista.",
-  "Kaupunki, jossa edes aurinko ei saa pysyvää oleskelulupaa.",
-  "Jääkiekkoillat: enemmän tragiikkaa kuin komediaa.",
-  "Sateenvarjot täällä eivät ole varuste, vaan elämäntapa.",
-  "Pilvet niin matalalla, että ne melkein koskettavat betonikattoja.",
-  "Kouvolan taivaanranta: yksi suuri harmaan sävyn paletti.",
-  "Jääkiekko täällä opettaa meille nöyryyttä ja kärsivällisyyttä – usein samaan aikaan.",
-  "Kaupunki, jossa hiljaisuus on yllättävän äänekästä.",
-  "Betonilabyrintti, josta löytää ulos vain sattumalta.",
-  "Aurinko Kouvolassa? Legendaa, kuten Loch Nessin hirviö.",
-  "Jääkiekkojoukkue, jonka kannattaminen on urheilusuoritus itsessään.",
-  "Missä jokainen vuodenaika muistuttaa marraskuuta.",
-  "Sadetakit täällä eivät ole muoti-ilmiö, vaan selviytymisstrategia.",
-  "Pilvet, jotka tekevät Kouvolan skylinestä vähemmän ja enemmän samanaikaisesti.",
-  "Jääkiekko-ottelut: missä tappiot muovaavat yhteisöllisyyttä.",
-  "Kaupunki, joka inspiroi dystooppisia haaveita.",
-  "Pilvet täällä ovat niin tutut, että ne tervehtivät nimellä.",
-  "Junamatka Kouvolaan: saapuminen harmaan eri sävyihin.",
-  "Joukkue, joka vie faniensa odotukset lattiatason alapuolelle.",
-  "Sateenvarjot pysyvät Kouvolassa pidempään kuin turistit.",
-  "Tihkusade täällä on niin pysyvää, että se voisi periä kaupungin.",
-  "Graffitit kertovat enemmän kaupungin historiasta kuin opaskirjat.",
-  "Missä optimismin löytää vain menneistä mainoskampanjoista.",
-  "Jääkiekkojoukkue, joka opettaa häviämisen jalon taidon.",
-  "Betoni, joka herättää enemmän kysymyksiä kuin inspiraatiota.",
-  "Kaupunki, jossa toivo aurinkoisista päivistä on vain vitsi.",
-  "Kookoo, vaikko kukkuu??"
-
-];
-
-
-  
-
-    let activePopups = 0;
-
-    function showPopup(id) {
-      if (activePopups >= 3) return;
-      const popup = document.getElementById(`popup${id}`);
-      const randomIndex = Math.floor(Math.random() * prompts.length);
-      document.getElementById(`popup-text${id}`).innerText = prompts[randomIndex];
-      const randomTop = Math.random() * 60 + 10; // Random position on screen
-      const randomLeft = Math.random() * 1 + 10;
-      popup.style.top = `${randomTop}%`;
-      popup.style.left = `${randomLeft}%`;
-      popup.style.display = "block";
-      activePopups++;
-    }
-
-    function closePopup(id) {
-      const popup = document.getElementById(`popup${id}`);
-      popup.style.display = "none";
-      activePopups--;
-      const delay = Math.random() * 3000 + 500; // Random delay between 0.5-2.5 seconds
-      setTimeout(() => showPopup(id), delay);
-    }
-
-    // Show all popups on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      for (let i = 1; i <= 5; i++) {
-        setTimeout(() => showPopup(i), i * 500); // Stagger initial popups
-      }
-    });
   </script>
+
+
 </body>
 </html>
