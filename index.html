@@ -1,10 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kouvosto3d - Räätälöidyt 3D-tulosteet</title>
+  <title>Kouvosto3d – 3D-tulostuspalvelu Kouvolassa | Räätälöidyt tulosteet</title>
+  <meta name="description" content="Tilaa yksilölliset 3D-tulosteet Kouvolasta! Kouvosto3d tarjoaa laadukasta ja nopeaa 3D-tulostuspalvelua kuluttajille ja yrityksille. Valitse materiaali, lähetä malli, ja saat tarjouksen!" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Kouvosto3d" />
+  <meta name="keywords" content="3D-tulostus, Kouvola, Kouvosto3d, 3D printtaus, PLA, PETG, moniväritulostus, tilaustulosteet, prototyypit" />
+  <link rel="canonical" href="https://kouvosto3d.fi/" />
   <style>
     /* Base Styles */
     body {
@@ -42,12 +46,26 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-    .filament-sample {
-      background: #eee;
-      padding: 1rem;
-      text-align: center;
+    .filament-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 2rem;
     }
-
+    .filament-sample {
+      background: #f9f9f9;
+      padding: 0.5rem;
+      text-align: center;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .filament-color {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 auto 0.5rem;
+      border: 1px solid #ccc;
+    }
     form {
       display: flex;
       flex-direction: column;
@@ -79,32 +97,6 @@
       color: white;
       margin-top: 2rem;
     }
-    .filament-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.filament-sample {
-  background: #f9f9f9;
-  padding: 0.5rem;
-  text-align: center;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.filament-color {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin: 0 auto 0.5rem;
-  border: 1px solid #ccc;
-}
-
-
-
-    /* Modal Styles */
     #modal, #modalend {
       position: fixed;
       top: 0;
@@ -112,10 +104,9 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
-      display: none;
       z-index: 1000;
     }
     #modalContent {
@@ -140,8 +131,6 @@
     #modalContent span:hover {
       color: #ff0000;
     }
-
-    /* Responsive Styles */
     @media (max-width: 600px) {
       main {
         padding: 1rem;
@@ -165,95 +154,49 @@
 </head>
 <body>
   <header>
-    <h1>Kouvosto3d</h1>
-    <p>Räätälöidyt 3D-tulosteet – Valmistettu ylpeästi Kouvolassa</p>
+    <h1>Kouvosto3d – 3D-tulostuspalvelu Kouvolassa</h1>
+    <p>Yksilölliset 3D-tulosteet kuluttajille ja yrityksille. Tilaa oma!</p>
   </header>
   <main>
-    <!--
-    <h2>Portfolio</h2>
-    <div class="gallery">
-      <img src="images/print1.jpg" alt="Tulostettu esine 1">
-      <img src="images/print2.jpg" alt="Tulostettu esine 2">
-      <img src="images/print3.jpg" alt="Tulostettu esine 3">
-    </div>
-    -->
+    <h2>Palvelumme</h2>
+    <p><strong>Kouvosto3d</strong> tarjoaa räätälöityjä <a href="/">3D-tulosteita Kouvolasta</a> niin yrityksille kuin yksityisasiakkaillekin. Meiltä saat nopeasti valmistetut ja huolella viimeistellyt tulosteet.</p>
 
-    <h2>Tietoa meistä </h2>
-    <p>Tervetuloa Kouvosto3d:lle! Tarjoamme yksilöllisiä 3D-tulostuspalveluita. Lähetä meille suunnitelmasi, valitse haluamasi tulostusmateriaali, ja me hoidamme loput – hinta-arviosta toimitukseen. Tarjoamme palvelut yrityksille kuin myös yksityishenkilöille</p>
-    <p>Kouvosto3d on sivutoimi, vähän niinkuin vaarin räätälöidyt puutyölelut lapsille, mutta hieman nykyaikaisemmalla mallilla. </p>
-    <p>Tulostamme ja toimitamme viraaleista meemi/fidget tulosteita aina teollisiin prototyyppeihin asti!  </p>
-    <p><strong>Tarjolla myös moniväritulostus!</strong> Kirjoita pyyntöön tieto, jos haluat samaan tulosteeseen erivärejä. (Max. 4 eriväriä toistaiseksi) </p>
-    <p><strong>Tulosteen suurin sallittu koko</strong> Tulosteen pitää mahtua <strong>256mm*256mm*256mm</strong> alueen sisään, koska tulostin ei vain yksinkertaisesti voi tulostaa itseään suuremmalle alueelle. Tulosteet/osat voidaan yhdistää tulostuksen jälkeen suuremmaksi kokonaisuudeksi kumminkin, näin voidaan luoda vaikka metrin pituinen miekka!</p>
-    <h4><a href="javascript:void(0);" onclick="openModal('modal')">Materiaaliopas - Lyhyt oppimäärä</a></h4>
+    <h2>Materiaalit ja tulostusalue</h2>
+    <p>Tulostamme PLA- ja PETG-materiaaleilla, joista voit valita eri värejä tarpeesi mukaan. Suurin sallittu tulostusalue on <strong>256 x 256 x 256 mm</strong>. Isommat projektit voidaan liittää useammasta osasta.</p>
 
-    <!-- Pop-up ikkuna -->
+    <h4><a href="javascript:void(0);" onclick="openModal('modal')">Materiaaliopas – Lyhyt oppimäärä</a></h4>
+
     <div id="modal">
       <div id="modalContent">
         <span onclick="closeModal('modal')">×</span>
-            <div class="material">
-                <h2>🧵 PLA ("perusmuovi")</h2>
-                <p><strong>Hyödyt:</strong></p>
-                <ul>
-                <li><strong>Tarkka ja siisti tulostusjälki</strong> – sopii hyvin yksityiskohtaisiin ja esteettisiin tulosteisiin. Esimerkiski figuureihin tai koristeisiin</li>
-                <li><strong>Ympäristöystävällinen</strong> – biopohjainen ja biohajoava materiaali.</li>
-                <li><strong>Helppo tulostaa</strong> – Nopea prototyyppien valmistus ja rajottamat mahdollisuudet tulosteissa.</li>
-                </ul>
-                <p><strong>Haitat:</strong></p>
-                <ul>
-                <li><strong>Heikko lämmönkesto</strong> – pehmenee noin 60 °C lämpötilassa.</li>
-                <li><strong>Hauraus</strong> – ei kestä hyvin mekaanista rasitusta tai iskuja.</li>
-                <li><strong>Huono säänkesto</strong> – ei sovellu pitkäaikaiseen ulkokäyttöön.</li>
-                </ul>
-            </div>
-            
-            <div class="material">
-                <h2>🔧 PETG (Kestävä muovi)</h2>
-                <p><strong>Hyödyt:</strong></p>
-                <ul>
-                <li><strong>Kestävä ja joustava</strong> – hyvä iskunkestävyys ja mekaaninen lujuus. Sopii esimerkiksi käyttöesineisiin</li>
-                <li><strong>Hyvä sään- ja kemikaalienkesto</strong> – soveltuu ulkokäyttöön ja vaativiin olosuhteisiin. Tarvitseeko jokin esimerkiski ulos kolon tai pienen varaosan </li>
-                <li><strong>Vähäinen kutistuminen</strong> – tulosteet säilyttävät muotonsa hyvin.</li>
-                </ul>
-                <p><strong>Haitat:</strong></p>
-                <ul>
-                <li><strong>Korkeampi hinta</strong> – kalliimpi kuin PLA.</li>
-                <li><strong>Vähemmän ympäristöystävällinen</strong> – ei biohajoava, mutta kierrätettävä.</li>
-                </ul>
-            </div>
+        <div class="material">
+          <h2>🧵 PLA ("perusmuovi")</h2>
+          <ul>
+            <li>Tarkka ja siisti tulostusjälki</li>
+            <li>Ympäristöystävällinen ja biohajoava</li>
+            <li>Heikko lämmönkesto ja hauraus</li>
+          </ul>
         </div>
+        <div class="material">
+          <h2>🔧 PETG (Kestävä muovi)</h2>
+          <ul>
+            <li>Kestävä ja joustava, soveltuu ulkokäyttöön</li>
+            <li>Hyvä kemikaalienkesto</li>
+            <li>Ei biohajoava, mutta kierrätettävä</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <h2>Hetivalmiit tulostusmateriaalit</h2>
     <div class="filament-gallery">
-      <div class="filament-sample">
-        <div class="filament-color" style="background-color: #000000;"></div>
-        <p>PLA - Musta</p>
-      </div>
-      <div class="filament-sample">
-        <div class="filament-color" style="background-color: #FFFFFF; border: 1px solid #ccc;"></div>
-        <p>PLA - Valkoinen</p>
-      </div>
-      <div class="filament-sample">
-        <div class="filament-color" style="background-color: #000000;"></div>
-        <p>PETG - Musta</p>
-      </div>
-      <div class="filament-sample">
-        <div class="filament-color" style="background-color: #ff0000;"></div>
-        <p>PLA Matte - Punainen</p>
-      </div>
-      <div class="filament-sample">
-        <div class="filament-color" style="background-color: #9d00ff;"></div>
-        <p>PLA - Galaxy Purple</p>
-      </div>
-      <div class="filament-sample">
-        <div class="filament-color" style="background-color: #FFFF00;"></div>
-        <p>PLA - Keltainen</p>
-      </div>
-
-      <div class="filament-sample">
-        <div class="filament-color" style="background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);"></div>
-        <p>Omavalinta</p>
-      </div>
+      <div class="filament-sample"><div class="filament-color" style="background-color: #000000;"></div><p>PLA – Musta</p></div>
+      <div class="filament-sample"><div class="filament-color" style="background-color: #FFFFFF;"></div><p>PLA – Valkoinen</p></div>
+      <div class="filament-sample"><div class="filament-color" style="background-color: #000000;"></div><p>PETG – Musta</p></div>
+      <div class="filament-sample"><div class="filament-color" style="background-color: #ff0000;"></div><p>PLA Matte – Punainen</p></div>
+      <div class="filament-sample"><div class="filament-color" style="background-color: #9d00ff;"></div><p>PLA – Galaxy Purple</p></div>
+      <div class="filament-sample"><div class="filament-color" style="background-color: #FFFF00;"></div><p>PLA – Keltainen</p></div>
+      <div class="filament-sample"><div class="filament-color" style="background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);"></div><p>Omavalinta</p></div>
     </div>
 
     <h2>Pyydä hinta-arvio</h2>
@@ -264,55 +207,42 @@
       <label for="email">Sähköpostiosoitteesi</label>
       <input type="email" name="email" id="email" required />
 
-      <label for="filament">Toivottu filamentti (kirjoita yllä olevasta vaihtoehdoista tai omavalinta)</label>
+      <label for="filament">Toivottu filamentti</label>
       <input type="text" name="filament" id="filament" required />
 
       <label for="details">Tulosteen kuvaus</label>
       <textarea name="details" id="details" rows="5" required></textarea>
 
-      <label for="file">Lähetä tulostustiedosto (STL/OBJ)</label>
+      <label for="file">Lähetä tiedosto (STL/OBJ)</label>
       <input type="file" name="file" id="file" accept=".stl,.obj" />
 
       <button type="submit">Lähetä pyyntö</button>
     </form>
 
-    <p></p>
-    <h2>Tilauksesta</h2>
-    <p>Kaikkiin pyyntöihin pyritään vastaamaan 3 työpäivän sisällä vastaanottamisesta.</p>
-    <p>Voit myös lähettää pyynnön suoraan sähköpostiin, lomakkeen täytön sijaan. </p>
-
+    <h2>Toimitus ja yhteystiedot</h2>
+    <p>Tilaukset toimitetaan postitse 5–10 arkipäivässä. Kysyttävää? <a href="mailto:kauppa@kouvosto3d.fi">Ota yhteyttä</a>.</p>
 
     <h4><a href="javascript:void(0);" onclick="openModal('modalend')">Yritystiedot ja toimitusehdot</a></h4>
 
-    <!-- Pop-up ikkuna -->
     <div id="modalend">
       <div id="modalContent">
         <span onclick="closeModal('modalend')">×</span>
         <h2>Yritystiedot</h2>
-        <p><strong>Yrityksen nimi:</strong> Kouvosto3d</p>
-        <p><strong>Y-tunnus:</strong> 3493670-4</p>
-        <p><strong>Postiosoite:</strong> Valvomontie 5, 45100 Kouvola</p>
-        <p><strong>Puhelinnumero:</strong> 040 123 4567</p>
-        <p><strong>Sähköposti:</strong> kauppa@kouvosto3d.fi</p>
-        <p><strong>Laskutus:</strong> OP Kevytyrittäjä -palvelun kautta sähköpostitse</p>
-
+        <p><strong>Kouvosto3d</strong><br>Y-tunnus: 3493670-4<br>Valvomontie 5, 45100 Kouvola<br>Puh: 040 123 4567<br>Sähköposti: <a href="mailto:kauppa@kouvosto3d.fi">kauppa@kouvosto3d.fi</a></p>
         <h2>Toimitusehdot</h2>
-        <p><strong>Toimitusaika:</strong> Tuotteet valmistetaan tilauksesta ja toimitetaan postitse. Toimitusaika on noin 5–10 arkipäivää tilauksen vahvistamisesta, jos materiaalia tai muita tarvikkeita ei tarvitse erikseen tilata.</p>
-        <p><strong>Palautusoikeus:</strong> Koska tuotteet valmistetaan asiakkaan toiveiden mukaan, niillä ei ole palautusoikeutta, ellei tuotteessa ole valmistusvirhettä.</p>
-        <p><strong>Maksutavat:</strong> Laskutus tapahtuu OP Kevytyrittäjä -palvelun kautta. Lasku tulee sähköpostilla.</p>
+        <p>Valmistusaika 5–10 arkipäivää. Ei palautusoikeutta yksilöllisille tuotteille, ellei virheellinen.</p>
+        <p>Maksu OP Kevytyrittäjä-palvelun kautta sähköpostitse.</p>
       </div>
     </div>
   </main>
   <footer>
-    <p>&copy; 2025 Kouvosto3d - Kaikki oikeudet pidätetään</p>
-    <p>Sähköposti: <a href="mailto:kauppa@kouvosto3d.fi" style="color: #ccc;">kauppa@kouvosto3d.fi</a></p>
+    <p>&copy; 2025 Kouvosto3d – Kaikki oikeudet pidätetään</p>
+    <p><a href="mailto:kauppa@kouvosto3d.fi" style="color: #ccc;">kauppa@kouvosto3d.fi</a></p>
   </footer>
-
   <script>
     function openModal(id) {
       document.getElementById(id).style.display = 'flex';
     }
-
     function closeModal(id) {
       document.getElementById(id).style.display = 'none';
     }
