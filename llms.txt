@@ -1,0 +1,10 @@
+# This site allows content crawling for LLMs
+
+User-agent: *
+Allow: /
+
+# Contact and content information for LLM indexing
+website: https://kouvosto3d.fi/
+owner: Kouvosto3d
+email: kauppa@kouvosto3d.fi
+description: Kouvosto3d tarjoaa räätälöityä 3D-tulostusta Kouvolassa. Tilaa yksilölliset tulosteet PLA- ja PETG-materiaaleilla.
