@@ -243,20 +243,57 @@
       <div class="flex flex-wrap items-center gap-4">
         <a class="underline underline-offset-4" href="mailto:kauppa@kouvosto3d.fi">kauppa@kouvosto3d.fi</a>
         <a class="underline underline-offset-4" href="https://kouvosto3d.fi" target="_blank" rel="noreferrer">kouvosto3d.fi</a>
+        <button id="infoBtn" class="underline underline-offset-4">Yritystiedot ja toimitusehdot</button>
       </div>
     </div>
   </footer>
 
-  <!-- Sticky mobile CTA -->
-  <div class="fixed bottom-0 left-0 right-0 md:hidden border-t backdrop-blur px-3 py-3" style="background:rgba(255,255,255,.96); border-color:#F5CBCB">
-    <div class="mx-auto max-w-5xl flex gap-2">
-      <a href="#quote" class="flex-1 text-center px-4 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
-      <a href="#materials" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Materiaalit</a>
+  <!-- Yritystiedot & toimitusehdot modal -->
+  <div id="infoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden">
+    <div class="relative max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-gray-700">
+      <button id="infoClose" class="absolute top-2 right-2 text-2xl leading-none text-gray-500 hover:text-gray-700" aria-label="Sulje">&times;</button>
+      <h3 class="text-lg font-semibold mb-2">Yritystiedot</h3>
+      <p class="text-sm leading-relaxed">
+        Kouvosto3d<br />
+        Y-tunnus: 3493670-4<br />
+        Valvomontie 5, 45100 Kouvola<br />
+        Puh: vain sähköposti<br />
+        Sähköposti: <a href="mailto:kauppa@kouvosto3d.fi" class="underline">kauppa@kouvosto3d.fi</a>
+      </p>
+      <h3 class="text-lg font-semibold mt-4 mb-2">Toimitusehdot</h3>
+      <p class="text-sm leading-relaxed">Valmistusaika 5–10 arkipäivää. Koska tuotteet valmistetaan asiakkaan toiveiden mukaan, niillä ei ole palautusoikeutta, ellei tuotteessa ole valmistusvirhettä.</p>
+      <p class="text-sm leading-relaxed mt-2">Maksu OP Kevytyrittäjä-palvelun kautta sähköpostitse.</p>
     </div>
+  </div>
+
+  <!-- Sticky mobile CTA -->
+    <div class="fixed bottom-0 left-0 right-0 md:hidden border-t backdrop-blur px-3 py-3" style="background:rgba(255,255,255,.96); border-color:#F5CBCB">
+      <div class="mx-auto max-w-5xl flex gap-2">
+        <a href="#quote" class="flex-1 text-center px-4 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
+        <a href="#materials" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Materiaalit</a>
+      </div>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const infoBtn = document.getElementById('infoBtn');
+    const infoModal = document.getElementById('infoModal');
+    const infoClose = document.getElementById('infoClose');
+
+    infoBtn.addEventListener('click', () => {
+      infoModal.classList.remove('hidden');
+    });
+
+    infoClose.addEventListener('click', () => {
+      infoModal.classList.add('hidden');
+    });
+
+    infoModal.addEventListener('click', (e) => {
+      if (e.target === infoModal) {
+        infoModal.classList.add('hidden');
+      }
+    });
   </script>
 </body>
 </html>
