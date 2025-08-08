@@ -44,22 +44,6 @@
     <div class="mx-auto max-w-5xl px-4 py-3 flex items-center gap-3">
       <img src="https://i.imgur.com/ds0WVfb.png" alt="kouvosto3d logo" class="h-12 w-auto" />
       <span class="font-semibold tracking-tight text-lg sm:text-xl">kouvosto3d</span>
-      <button
-        id="menuBtn"
-        class="ml-auto md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-        aria-label="Valikko"
-        aria-expanded="false"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
       <nav class="ml-auto hidden md:flex items-center gap-6 text-sm">
         <a class="hover:underline" href="#capabilities">Palvelut</a>
         <a class="hover:underline" href="#materials">Materiaalit</a>
@@ -68,24 +52,6 @@
         <a href="#quote" class="px-3 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
       </nav>
     </div>
-    <nav
-      id="mobileNav"
-      class="md:hidden hidden border-b"
-      style="background:rgba(255,255,255,.95); border-color:#9ECAD6"
-    >
-      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
-        <a class="hover:underline" href="#capabilities">Palvelut</a>
-        <a class="hover:underline" href="#materials">Materiaalit</a>
-        <a class="hover:underline" href="#gallery">Galleria</a>
-        <a class="hover:underline" href="#how">Näin tilaat</a>
-        <a
-          href="#quote"
-          class="px-3 py-2 rounded-md font-medium text-white text-center"
-          style="background:#748DAE"
-          >Pyydä tarjous</a
-        >
-      </div>
-    </nav>
   </header>
 
   <main>
@@ -163,18 +129,18 @@
           </p>
 
           <div class="mt-4 grid grid-cols-2 gap-3">
-            <div class="rounded-lg p-4 border" style="background:#FFEAEA; border-color:#F5CBCB">
+            <button id="plaInfoBtn" type="button" class="text-left rounded-lg p-4 border" style="background:#FFEAEA; border-color:#F5CBCB">
               <div class="font-medium">PLA</div>
               <p class="text-sm text-gray-700 leading-relaxed mt-1">
                 Helppo ja monipuolinen. Prototyypit, koristeet, kevyet kotelot.
               </p>
-            </div>
-            <div class="rounded-lg p-4 border" style="background:#fff; border-color:#748DAE">
+            </button>
+            <button id="petgInfoBtn" type="button" class="text-left rounded-lg p-4 border" style="background:#fff; border-color:#748DAE">
               <div class="font-medium" style="color:#748DAE">PETG</div>
               <p class="text-sm text-gray-700 leading-relaxed mt-1">
                 Kestävä ja säänkestävä. Toiminnalliset osat ja ulkokäyttö.
               </p>
-            </div>
+            </button>
           </div>
 
           <div class="mt-6">
@@ -316,16 +282,57 @@
       <h3 class="text-lg font-semibold mt-4 mb-2">Toimitusehdot</h3>
       <p class="text-sm leading-relaxed">Valmistusaika 5–10 arkipäivää. Koska tuotteet valmistetaan asiakkaan toiveiden mukaan, niillä ei ole palautusoikeutta, ellei tuotteessa ole valmistusvirhettä.</p>
       <p class="text-sm leading-relaxed mt-2">Maksu OP Kevytyrittäjä-palvelun kautta sähköpostitse.</p>
+  </div>
+  </div>
+
+  <!-- Materiaalien lisätiedot modals -->
+  <div id="plaModal" class="material-modal fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden">
+    <div class="relative max-w-xs w-full bg-white rounded-lg shadow-lg p-4 text-gray-700">
+      <button id="plaClose" class="absolute top-1 right-2 text-2xl leading-none text-gray-500 hover:text-gray-700" aria-label="Sulje">&times;</button>
+      <h3 class="text-lg font-semibold mb-2">PLA</h3>
+      <p class="text-sm leading-relaxed">Kevyt ja helppo materiaali. Sopii prototyyppeihin, koristeisiin ja pieniin arkiesineisiin.</p>
+    </div>
+  </div>
+  <div id="petgModal" class="material-modal fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden">
+    <div class="relative max-w-xs w-full bg-white rounded-lg shadow-lg p-4 text-gray-700">
+      <button id="petgClose" class="absolute top-1 right-2 text-2xl leading-none text-gray-500 hover:text-gray-700" aria-label="Sulje">&times;</button>
+      <h3 class="text-lg font-semibold mb-2">PETG</h3>
+      <p class="text-sm leading-relaxed">Kestävä ja joustava materiaali. Hyvä varaosiin, arjen käyttöesineisiin ja ulkokäyttöön.</p>
     </div>
   </div>
 
   <!-- Sticky mobile CTA -->
     <div class="fixed bottom-0 left-0 right-0 md:hidden border-t backdrop-blur px-3 py-3" style="background:rgba(255,255,255,.96); border-color:#F5CBCB">
-      <div class="mx-auto max-w-5xl flex gap-2">
+      <div class="mx-auto max-w-5xl flex items-center gap-2">
+        <button
+          id="menuBtn"
+          aria-label="Valikko"
+          aria-expanded="false"
+          class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
         <a href="#quote" class="flex-1 text-center px-4 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
-        <a href="#materials" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Materiaalit</a>
+        <a href="#gallery" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Galleria</a>
       </div>
   </div>
+
+  <!-- Mobile nav -->
+  <nav
+    id="mobileNav"
+    class="md:hidden hidden fixed bottom-16 left-3 z-50 border rounded-md p-4 text-lg"
+    style="background:rgba(255,255,255,.95); border-color:#9ECAD6"
+  >
+    <div class="flex flex-col gap-4">
+      <a class="hover:underline" href="#capabilities">Palvelut</a>
+      <a class="hover:underline" href="#materials">Materiaalit</a>
+      <a class="hover:underline" href="#gallery">Galleria</a>
+      <a class="hover:underline" href="#how">Näin tilaat</a>
+      <a href="#quote" class="px-3 py-2 rounded-md font-medium text-white text-center" style="background:#748DAE">Pyydä tarjous</a>
+    </div>
+  </nav>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -336,6 +343,13 @@
 
     const menuBtn = document.getElementById('menuBtn');
     const mobileNav = document.getElementById('mobileNav');
+
+    const plaInfoBtn = document.getElementById('plaInfoBtn');
+    const petgInfoBtn = document.getElementById('petgInfoBtn');
+    const plaModal = document.getElementById('plaModal');
+    const petgModal = document.getElementById('petgModal');
+    const plaClose = document.getElementById('plaClose');
+    const petgClose = document.getElementById('petgClose');
 
     menuBtn.addEventListener('click', () => {
       const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
@@ -352,6 +366,9 @@
         mobileNav.classList.add('hidden');
         menuBtn.setAttribute('aria-expanded', 'false');
         menuBtn.focus();
+        plaModal.classList.add('hidden');
+        petgModal.classList.add('hidden');
+        infoModal.classList.add('hidden');
       }
     });
 
@@ -373,6 +390,34 @@
     infoModal.addEventListener('click', (e) => {
       if (e.target === infoModal) {
         infoModal.classList.add('hidden');
+      }
+    });
+
+    plaInfoBtn.addEventListener('click', () => {
+      plaModal.classList.remove('hidden');
+    });
+
+    petgInfoBtn.addEventListener('click', () => {
+      petgModal.classList.remove('hidden');
+    });
+
+    plaClose.addEventListener('click', () => {
+      plaModal.classList.add('hidden');
+    });
+
+    petgClose.addEventListener('click', () => {
+      petgModal.classList.add('hidden');
+    });
+
+    plaModal.addEventListener('click', (e) => {
+      if (e.target === plaModal) {
+        plaModal.classList.add('hidden');
+      }
+    });
+
+    petgModal.addEventListener('click', (e) => {
+      if (e.target === petgModal) {
+        petgModal.classList.add('hidden');
       }
     });
   </script>
