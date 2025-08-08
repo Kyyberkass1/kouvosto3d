@@ -41,9 +41,9 @@
 <body class="min-h-screen" style="background:#fff; color:#1f2937">
   <!-- Header -->
   <header class="sticky top-0 z-50 border-b backdrop-blur" style="background:rgba(255,255,255,.6); border-color:#9ECAD6">
-    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center relative">
-      <img src="https://i.imgur.com/Co8405C.png" alt="kouvosto3d logo" class="h-12 w-auto absolute left-1/2 -translate-x-1/2" />
-      <nav class="ml-auto hidden md:flex items-center gap-6 text-sm">
+    <div class="mx-auto max-w-5xl px-4 py-4 md:py-3 flex items-center relative">
+      <img src="https://i.imgur.com/Co8405C.png" alt="kouvosto3d logo" class="h-12 w-auto absolute left-1/2 -translate-x-1/2 pointer-events-none z-0" />
+      <nav class="ml-auto hidden md:flex items-center gap-6 text-sm relative z-10">
         <a class="hover:underline" href="#capabilities">Palvelut</a>
         <a class="hover:underline" href="#materials">Materiaalit</a>
         <a class="hover:underline" href="#gallery">Galleria</a>
@@ -142,18 +142,6 @@
             </button>
           </div>
 
-          <div class="mt-6">
-            <label class="block font-medium">Värivalinta</label>
-            <select name="color" class="mt-2 w-full border rounded-md p-2.5 text-sm md:text-base" style="border-color:#748DAE">
-              <option value="musta" style="background:#000; color:#fff;">Musta</option>
-              <option value="valkoinen" style="background:#fff; color:#000;">Valkoinen</option>
-              <option value="harmaa" style="background:#808080; color:#fff;">Harmaa</option>
-              <option value="sininen" style="background:#1e3a8a; color:#fff;">Sininen</option>
-              <option value="punainen" style="background:#dc2626; color:#fff;">Punainen</option>
-              <option value="vihreä" style="background:#16a34a; color:#fff;">Vihreä</option>
-              <option value="muu">Muu / kerro lisätiedoissa</option>
-            </select>
-          </div>
         </div>
 
         <div id="quote" class="rounded-xl p-5 md:p-6 border shadow-sm" style="border-color:#F5CBCB; background:#fff">
@@ -263,6 +251,7 @@
         <a href="https://kouvosto3d.fi" target="_blank" rel="noopener noreferrer">kouvosto3d.fi</a>
         <button id="infoBtn" class="underline underline-offset-4">Yritystiedot ja toimitusehdot</button>
       </div>
+      <div>site vide coded with gpt-5</div>
     </div>
   </footer>
 
@@ -290,6 +279,11 @@
       <button id="plaClose" class="absolute top-1 right-2 text-2xl leading-none text-gray-500 hover:text-gray-700" aria-label="Sulje">&times;</button>
       <h3 class="text-lg font-semibold mb-2">PLA</h3>
       <p class="text-sm leading-relaxed">Kevyt ja helppo materiaali. Sopii prototyyppeihin, koristeisiin ja pieniin arkiesineisiin. PLA on biohajoava vaihtoehto, mutta se ei kestä korkeaa lämpöä tai kovaa rasitusta.</p>
+      <ul class="text-sm list-disc pl-5 mt-2 space-y-1">
+        <li>Sulamislämpötila noin 200 °C</li>
+        <li>Lämpötilankesto noin 60 °C</li>
+        <li>Biopohjainen ja hajuton</li>
+      </ul>
     </div>
   </div>
   <div id="petgModal" class="material-modal fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden">
@@ -297,6 +291,11 @@
       <button id="petgClose" class="absolute top-1 right-2 text-2xl leading-none text-gray-500 hover:text-gray-700" aria-label="Sulje">&times;</button>
       <h3 class="text-lg font-semibold mb-2">PETG</h3>
       <p class="text-sm leading-relaxed">Kestävä ja joustava materiaali. Hyvä varaosiin, arjen käyttöesineisiin ja ulkokäyttöön. PETG on PLA:ta kalliimpi, mutta se kestää paremmin lämpöä, UV-säteilyä ja mekaanista rasitusta, joten se on erinomainen valinta useimpiin tarpeisiin.</p>
+      <ul class="text-sm list-disc pl-5 mt-2 space-y-1">
+        <li>Sulamislämpötila noin 240 °C</li>
+        <li>Lämpötilankesto noin 80 °C</li>
+        <li>Kemikaali- ja UV-säteilyn kesto</li>
+      </ul>
     </div>
   </div>
 
