@@ -3,16 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Räätälöity 3D-tulostus PLA- ja PETG-materiaaleilla. Bambu A1 256×256×256 mm." />
-  <link rel="canonical" href="https://kouvosto3d.fi/" />
+
   <title>Kouvosto3D – Räätälöity 3D-tulostus</title>
+  <meta name="description" content="Räätälöity FDM 3D-tulostus PLA- ja PETG-materiaaleilla. Bambu A1 256×256×256 mm." />
+  <meta name="keywords" content="3D-tulostus, FDM, PLA, PETG, Kouvola, viraali 3D print" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Kouvosto3D – Räätälöity FDM 3D-tulostus" />
+  <meta property="og:description" content="Räätälöity FDM 3D-tulostus PLA- ja PETG-materiaaleilla. Bambu A1 256×256×256 mm." />
+  <meta property="og:image" content="https://i.imgur.com/ds0WVfb.png" />
+  <meta property="og:url" content="https://kouvosto3d.fi/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kouvosto3D – Räätälöity FDM 3D-tulostus" />
+  <meta name="twitter:description" content="Räätälöity FDM 3D-tulostus PLA- ja PETG-materiaaleilla. Bambu A1 256×256×256 mm." />
+  <meta name="twitter:image" content="https://i.imgur.com/ds0WVfb.png" />
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "kouvosto3d",
+      "image": "https://i.imgur.com/ds0WVfb.png",
+      "url": "https://kouvosto3d.fi",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kouvola",
+        "addressCountry": "FI"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "kauppa@kouvosto3d.fi",
+        "contactType": "customer support"
+      }
+    }
+  </script>
 </head>
 <body class="min-h-screen" style="background:#fff; color:#1f2937">
   <!-- Header -->
   <header class="sticky top-0 z-50 border-b backdrop-blur" style="background:rgba(255,255,255,.95); border-color:#9ECAD6">
     <div class="mx-auto max-w-5xl px-4 py-3 flex items-center gap-3">
-      <img src="https://i.imgur.com/ds0WVfb.png" alt="kouvosto3d logo" class="h-8 w-auto" />
+      <img src="https://i.imgur.com/ds0WVfb.png" alt="kouvosto3d logo" class="h-12 w-auto" />
       <span class="font-semibold tracking-tight text-lg sm:text-xl">kouvosto3d</span>
       <nav class="ml-auto hidden md:flex items-center gap-6 text-sm">
         <a class="hover:underline" href="#capabilities">Palvelut</a>
@@ -52,6 +83,7 @@
             <li>Prototyypit ja toiminnalliset osat</li>
             <li>Varaosat ja korvaavat kappaleet</li>
             <li>Cosplay / rekvisiitta</li>
+            <li>Viraalit 3D-tulosteet</li>
           </ul>
         </div>
       </div>
@@ -62,7 +94,7 @@
       <div class="mx-auto max-w-5xl px-4">
         <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Palvelut</h2>
         <p class="mt-2 text-gray-600 leading-relaxed">
-          FDM/FFF-tulostus viritetyillä profiileilla lujuutta ja pintaa varten.
+          FDM-tulostus viritetyillä profiileilla; pinnanlaatu on sitä mitä menetelmä tuottaa.
         </p>
 
         <div class="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
@@ -73,9 +105,9 @@
             </div>
           </div>
           <div class="rounded-lg p-4 md:p-5 border bg-white" style="border-color:#748DAE">
-            <div class="font-medium md:text-lg">Kevyt viimeistely</div>
+            <div class="font-medium md:text-lg">Viraalit tulosteet</div>
             <div class="text-sm md:text-base text-gray-700 leading-relaxed mt-1">
-              Hionta ja pohjamaalaus pyydettäessä.
+              Toteutamme trendikkäitä malleja ja somessa leviävät 3D-projektit.
             </div>
           </div>
           <div class="rounded-lg p-4 md:p-5 border bg-white" style="border-color:#F5CBCB">
@@ -115,24 +147,14 @@
           <div class="mt-6">
             <label class="block font-medium">Värivalinta</label>
             <select name="color" class="mt-2 w-full border rounded-md p-2.5 text-sm md:text-base" style="border-color:#748DAE">
-              <option>Musta</option>
-              <option>Valkoinen</option>
-              <option>Harmaa</option>
-              <option>Sininen</option>
-              <option>Punainen</option>
-              <option>Vihreä</option>
-              <option>Muu / kerro lisätiedoissa</option>
+              <option value="musta" style="background:#000; color:#fff;">Musta</option>
+              <option value="valkoinen" style="background:#fff; color:#000;">Valkoinen</option>
+              <option value="harmaa" style="background:#808080; color:#fff;">Harmaa</option>
+              <option value="sininen" style="background:#1e3a8a; color:#fff;">Sininen</option>
+              <option value="punainen" style="background:#dc2626; color:#fff;">Punainen</option>
+              <option value="vihreä" style="background:#16a34a; color:#fff;">Vihreä</option>
+              <option value="muu">Muu / kerro lisätiedoissa</option>
             </select>
-          </div>
-
-          <div class="mt-6">
-            <p class="text-xs md:text-sm text-gray-600 mb-2">Väriteema</p>
-            <div class="flex gap-2">
-              <span class="h-6 w-10 rounded" style="background:#9ECAD6"></span>
-              <span class="h-6 w-10 rounded" style="background:#748DAE"></span>
-              <span class="h-6 w-10 rounded" style="background:#F5CBCB"></span>
-              <span class="h-6 w-10 rounded" style="background:#FFEAEA"></span>
-            </div>
           </div>
         </div>
 
@@ -167,28 +189,28 @@
         <p class="mt-2 text-gray-600 leading-relaxed">Esimerkkejä tulosteista (korvaa omilla kuvillasi).</p>
         <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto1/800/800" alt="Tuloste 1" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto1/800/800" alt="Lähikuva taittuvista viivaimista" class="w-full h-full object-cover aspect-square" />
           </figure>
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto2/800/800" alt="Tuloste 2" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto2/800/800" alt="Ruskeat kiviset kukkulat valkeaa taivasta vasten" class="w-full h-full object-cover aspect-square" />
           </figure>
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto3/800/800" alt="Tuloste 3" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto3/800/800" alt="Harmaat kukkulat vuorijonon vieressä päivällä" class="w-full h-full object-cover aspect-square" />
           </figure>
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto4/800/800" alt="Tuloste 4" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto4/800/800" alt="Valkoinen puinen hengenpelastajan torni rannalla auringonlaskun aikaan" class="w-full h-full object-cover aspect-square" />
           </figure>
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto5/800/800" alt="Tuloste 5" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto5/800/800" alt="MacBook Air, musta iPhone 4 ja juomalasi pöydällä" class="w-full h-full object-cover aspect-square" />
           </figure>
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto6/800/800" alt="Tuloste 6" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto6/800/800" alt="Henkilö seisoo merenrannalla" class="w-full h-full object-cover aspect-square" />
           </figure>
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto7/800/800" alt="Tuloste 7" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto7/800/800" alt="Kuva korkeista kerrostaloista" class="w-full h-full object-cover aspect-square" />
           </figure>
           <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
-            <img src="https://picsum.photos/seed/kouvosto8/800/800" alt="Tuloste 8" class="w-full h-full object-cover aspect-square" />
+            <img src="https://picsum.photos/seed/kouvosto8/800/800" alt="Harmaasävykuva taloista vuoristomaiseman ja veden äärellä" class="w-full h-full object-cover aspect-square" />
           </figure>
         </div>
       </div>
