@@ -1,7 +1,7 @@
 # kouvosto3d
 
 
-Generated with ChatGPT
+Generated with ChatGPT-5 vibe code
 
 Static site for Kouvosto3D.
 
