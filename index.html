@@ -3,272 +3,239 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kouvosto3d – 3D-tulostuspalvelu Kouvolassa | Räätälöidyt tulosteet</title>
-  <meta name="description" content="Tilaa yksilölliset 3D-tulosteet Kouvolasta! Kouvosto3d tarjoaa laadukasta ja nopeaa 3D-tulostuspalvelua kuluttajille ja yrityksille. Valitse materiaali, lähetä malli, ja saat tarjouksen!" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Kouvosto3d" />
-  <meta name="keywords" content="3D-tulostus, Kouvola, Kouvosto3d, 3D printtaus, PLA, PETG, moniväritulostus, tilaustulosteet, prototyypit" />
-  <link rel="canonical" href="https://kouvosto3d.fi/" />
-  <style>
-    /* Base Styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: rgb(118, 118, 118);
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #222;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1, h2 {
-      margin-top: 0;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .gallery img div {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .filament-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .filament-sample {
-      background: #f9f9f9;
-      padding: 0.5rem;
-      text-align: center;
-      border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .filament-color {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin: 0 auto 0.5rem;
-      border: 1px solid #ccc;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      margin-top: 1rem;
-    }
-    input, select, textarea {
-      padding: 0.5rem;
-      font-size: 1rem;
-      margin-top: 0.5rem;
-    }
-    button {
-      margin-top: 1.5rem;
-      padding: 0.75rem;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #218838;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #222;
-      color: white;
-      margin-top: 2rem;
-    }
-    #modal, #modalend {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    #modalContent {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      width: 90%;
-      max-width: 600px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    #modalContent span {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 30px;
-      cursor: pointer;
-      color: #333;
-    }
-    #modalContent span:hover {
-      color: #ff0000;
-    }
-    @media (max-width: 600px) {
-      main {
-        padding: 1rem;
-        margin: 1rem;
-      }
-      .gallery, .filament-gallery {
-        grid-template-columns: 1fr;
-      }
-      input, select, textarea, button {
-        font-size: 1rem;
-      }
-      header, footer {
-        padding: 0.5rem;
-      }
-      #modalContent {
-        width: 95%;
-        padding: 1rem;
-      }
-    }
-  </style>
+  <title>Kouvosto3D – Räätälöity 3D-tulostus</title>
+  <meta name="description" content="Räätälöity 3D-tulostus PLA- ja PETG-materiaaleilla. Bambu A1 256×256×256 mm." />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>Kouvosto3d – 3D-tulostuspalvelu Kouvolassa</h1>
-    <p>Yksilölliset 3D-tulosteet kuluttajille ja yrityksille. Tilaa oma!</p>
+<body class="min-h-screen" style="background:#fff; color:#1f2937">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b backdrop-blur" style="background:rgba(255,255,255,.95); border-color:#9ECAD6">
+    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center gap-3">
+      <img src="https://i.imgur.com/ds0WVfb.png" alt="kouvosto3d logo" class="h-8 w-auto" />
+      <span class="font-semibold tracking-tight text-lg sm:text-xl">kouvosto3d</span>
+      <nav class="ml-auto hidden md:flex items-center gap-6 text-sm">
+        <a class="hover:underline" href="#capabilities">Palvelut</a>
+        <a class="hover:underline" href="#materials">Materiaalit</a>
+        <a class="hover:underline" href="#gallery">Galleria</a>
+        <a class="hover:underline" href="#how">Näin tilaat</a>
+        <a href="#quote" class="px-3 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
+      </nav>
+    </div>
   </header>
+
   <main>
-    <h2>Palvelumme</h2>
-    <p><strong>Kouvosto3d</strong> tarjoaa räätälöityjä <a href="/">3D-tulosteita Kouvolasta</a> niin yrityksille kuin yksityisasiakkaillekin. Meiltä saat nopeasti valmistetut ja huolella viimeistellyt tulosteet.</p>
+    <!-- HERO -->
+    <section class="py-10 md:py-16" style="background:#9ECAD6">
+      <div class="mx-auto max-w-5xl px-4 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Räätälöity 3D-tulostus</h1>
+          <p class="mt-3 md:mt-4 text-base md:text-lg leading-relaxed text-gray-800">
+            Nopeasti ja edullisesti. Tulostamme PLA- ja PETG-materiaaleilla. Maksimikoko:
+            Bambu A1 — 256 × 256 × 256&nbsp;mm.
+          </p>
 
-    <h2>Materiaalit ja tulostusalue</h2>
-    <p>Tulostamme PLA- ja PETG-materiaaleilla, joista voit valita eri värejä tarpeesi mukaan. Suurin sallittu tulostusalue on <strong>256 x 256 x 256 mm</strong>. Isommat projektit voidaan liittää useammasta osasta.</p>
-    
-    <h2>Esimerkki tuotteita</h2>
-    <p><strong>Kestävä tuopinalunen (coaster) omalla logolla</strong>. Voidaan tehdä yksipuolisena tai lisätä myös teksti tai QR koodi toiselle puolelle!</p>
-    <p><strong>Avaimenperät NFC tägillä</strong>. Olisiko hienoa kantaa avaimenperää, joka on sosiaalisen median logo ja sen skannaamalla puhelimella sivusto avautuu!</p>
-    <p><strong>"Jätä arvostelu" - kyltti </strong>. Kästävä pöytään asetettava kyltti jossa lyhyt teksti, joka pyytää jättämään arvostelun sivustolle, QR-koodi ja NFC tag ohjaavat oikeaan sivustoon.</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <a href="#quote" class="px-4 py-2 rounded-md font-medium text-white shadow-sm active:scale-[.99]" style="background:#748DAE">Pyydä tarjous</a>
+            <a href="#materials" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Materiaalit</a>
+          </div>
 
-    <h4><a href="javascript:void(0);" onclick="openModal('modal')">Materiaaliopas – Lyhyt oppimäärä</a></h4>
-
-    <div id="modal">
-      <div id="modalContent">
-        <span onclick="closeModal('modal')">×</span>
-        <div class="material">
-          <h2>🧵 PLA ("perusmuovi")</h2>
-          
-                <p><strong>Hyödyt:</strong></p>
-                <ul>
-                <li><strong>Tarkka ja siisti tulostusjälki</strong> – sopii hyvin yksityiskohtaisiin ja esteettisiin tulosteisiin. Esimerkiski figuureihin tai koristeisiin</li>
-                <li><strong>Ympäristöystävällinen</strong> – biopohjainen ja biohajoava materiaali.</li>
-                <li><strong>Helppo tulostaa</strong> – Nopea prototyyppien valmistus ja rajottamat mahdollisuudet tulosteissa.</li>
-                </ul>
-                <p><strong>Haitat:</strong></p>
-                <ul>
-                <li><strong>Heikko lämmönkesto</strong> – pehmenee noin 60 °C lämpötilassa.</li>
-                <li><strong>Hauraus</strong> – ei kestä hyvin mekaanista rasitusta tai iskuja.</li>
-                <li><strong>Huono säänkesto</strong> – ei sovellu pitkäaikaiseen ulkokäyttöön.</li>
-                </ul>
+          <div class="mt-4 flex gap-2 text-sm">
+            <span class="px-2 py-1 rounded" style="background:#F5CBCB">PLA</span>
+            <span class="px-2 py-1 rounded border" style="border-color:#748DAE; color:#748DAE">PETG</span>
+          </div>
         </div>
-        <div class="material">
-          <h2>🔧 PETG (Kestävä muovi)</h2>
 
-                <p><strong>Hyödyt:</strong></p>
-                <ul>
-                <li><strong>Kestävä ja joustava</strong> – hyvä iskunkestävyys ja mekaaninen lujuus. Sopii esimerkiksi käyttöesineisiin</li>
-                <li><strong>Hyvä sään- ja kemikaalienkesto</strong> – soveltuu ulkokäyttöön ja vaativiin olosuhteisiin. Tarvitseeko jokin esimerkiski ulos kolon tai pienen varaosan </li>
-                <li><strong>Vähäinen kutistuminen</strong> – tulosteet säilyttävät muotonsa hyvin.</li>
-                </ul>
-                <p><strong>Haitat:</strong></p>
-                <ul>
-                <li><strong>Korkeampi hinta</strong> – kalliimpi kuin PLA.</li>
-                <li><strong>Vähemmän ympäristöystävällinen</strong> – ei biohajoava, mutta kierrätettävä.</li>
-                </ul>
+        <div class="rounded-xl border bg-white/80 p-5 md:p-6 shadow-sm">
+          <p class="font-medium">Mitä voimme tehdä?</p>
+          <ul class="list-disc ml-5 text-sm md:text-base mt-2 leading-relaxed text-gray-700">
+            <li>Prototyypit ja toiminnalliset osat</li>
+            <li>Varaosat ja korvaavat kappaleet</li>
+            <li>Cosplay / rekvisiitta</li>
+          </ul>
         </div>
       </div>
-    </div>
+    </section>
 
-    <h2>Hetivalmiit tulostusmateriaalit</h2>
-    <div class="filament-gallery">
-      <div class="filament-sample"><div class="filament-color" style="background-color: #000000;"></div><p>PLA – Musta</p></div>
-      <div class="filament-sample"><div class="filament-color" style="background-color: #FFFFFF;"></div><p>PLA – Valkoinen</p></div>
-      <div class="filament-sample"><div class="filament-color" style="background-color: #000000;"></div><p>PETG – Musta</p></div>
-      <div class="filament-sample"><div class="filament-color" style="background-color: #ff0000;"></div><p>PLA Matte – Punainen</p></div>
-      <div class="filament-sample"><div class="filament-color" style="background-color: #9d00ff;"></div><p>PLA – Galaxy Purple</p></div>
-      <div class="filament-sample"><div class="filament-color" style="background-color: #FFFF00;"></div><p>PLA – Keltainen</p></div>
-      <div class="filament-sample"><div class="filament-color" style="background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);"></div><p>Omavalinta</p></div>
-    </div>
+    <!-- PALVELUT -->
+    <section id="capabilities" class="py-10 md:py-14">
+      <div class="mx-auto max-w-5xl px-4">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Palvelut</h2>
+        <p class="mt-2 text-gray-600 leading-relaxed">
+          FDM/FFF-tulostus viritetyillä profiileilla lujuutta ja pintaa varten.
+        </p>
 
-    <h2>Pyydä hinta-arvio</h2>
-    <form action="https://formspree.io/f/mblorkny" method="POST" enctype="multipart/form-data">
-      <label for="name">Nimesi</label>
-      <input type="text" name="name" id="name" required />
-
-      <label for="email">Sähköpostiosoitteesi</label>
-      <input type="email" name="email" id="email" required />
-
-      <label for="filament">Toivottu filamentti</label>
-      <input type="text" name="filament" id="filament" required />
-
-      <label for="details">Tulosteen kuvaus</label>
-      <textarea name="details" id="details" rows="5" required></textarea>
-
-      <label for="file">Lähetä tiedosto (STL/OBJ)</label>
-      <input type="file" name="file" id="file" accept=".stl,.obj" />
-
-      <button type="submit">Lähetä pyyntö</button>
-    </form>
-
-    <h2>Toimitus ja yhteystiedot</h2>
-    <p>Tilaukset toimitetaan postitse 5–10 arkipäivässä. Kysyttävää? <a href="mailto:kauppa@kouvosto3d.fi">Ota yhteyttä</a>.</p>
-    <p>Kaikkiin pyyntöihin pyritään vastaamaan 3 työpäivän sisällä vastaanottamisesta.</p>
-    <p>Voit myös lähettää pyynnön suoraan sähköpostiin, lomakkeen täytön sijaan. </p>
-
-
-    <h4><a href="javascript:void(0);" onclick="openModal('modalend')">Yritystiedot ja toimitusehdot</a></h4>
-
-    <div id="modalend">
-      <div id="modalContent">
-        <span onclick="closeModal('modalend')">×</span>
-        <h2>Yritystiedot</h2>
-        <p><strong>Kouvosto3d</strong><br>Y-tunnus: 3493670-4<br>Valvomontie 5, 45100 Kouvola<br>Puh: 040 123 4567<br>Sähköposti: <a href="mailto:kauppa@kouvosto3d.fi">kauppa@kouvosto3d.fi</a></p>
-        <h2>Toimitusehdot</h2>
-        <p>Valmistusaika 5–10 arkipäivää. Koska tuotteet valmistetaan asiakkaan toiveiden mukaan, niillä ei ole palautusoikeutta, ellei tuotteessa ole valmistusvirhettä</p>
-        <p>Maksu OP Kevytyrittäjä-palvelun kautta sähköpostitse.</p>
+        <div class="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div class="rounded-lg p-4 md:p-5 border bg-white" style="border-color:#F5CBCB">
+            <div class="font-medium md:text-lg">Maksimi tulostusala</div>
+            <div class="text-sm md:text-base text-gray-700 leading-relaxed mt-1">
+              Bambu A1: <b>256 × 256 × 256&nbsp;mm</b>. Isommat osat voidaan jakaa ja liittää.
+            </div>
+          </div>
+          <div class="rounded-lg p-4 md:p-5 border bg-white" style="border-color:#748DAE">
+            <div class="font-medium md:text-lg">Kevyt viimeistely</div>
+            <div class="text-sm md:text-base text-gray-700 leading-relaxed mt-1">
+              Hionta ja pohjamaalaus pyydettäessä.
+            </div>
+          </div>
+          <div class="rounded-lg p-4 md:p-5 border bg-white" style="border-color:#F5CBCB">
+            <div class="font-medium md:text-lg">Pienet sarjat</div>
+            <div class="text-sm md:text-base text-gray-700 leading-relaxed mt-1">
+              Nopeat proto- ja varaosasarjat yrityksille ja harrastajille.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- MATERIAALIT + LOMAKE -->
+    <section id="materials" class="py-10 md:py-14" style="background:#FFEAEA">
+      <div class="mx-auto max-w-5xl px-4 grid md:grid-cols-2 gap-8 md:gap-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Materiaalit & värit</h2>
+          <p class="mt-2 text-gray-700 leading-relaxed">
+            Autamme valitsemaan oikean materiaalin käyttötarkoitukseen. Saatavilla PLA ja PETG.
+          </p>
+
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <div class="rounded-lg p-4 border" style="background:#FFEAEA; border-color:#F5CBCB">
+              <div class="font-medium">PLA</div>
+              <p class="text-sm text-gray-700 leading-relaxed mt-1">
+                Helppo ja monipuolinen. Prototyypit, koristeet, kevyet kotelot.
+              </p>
+            </div>
+            <div class="rounded-lg p-4 border" style="background:#fff; border-color:#748DAE">
+              <div class="font-medium" style="color:#748DAE">PETG</div>
+              <p class="text-sm text-gray-700 leading-relaxed mt-1">
+                Kestävä ja säänkestävä. Toiminnalliset osat ja ulkokäyttö.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <label class="block font-medium">Värivalinta</label>
+            <select name="color" class="mt-2 w-full border rounded-md p-2.5 text-sm md:text-base" style="border-color:#748DAE">
+              <option>Musta</option>
+              <option>Valkoinen</option>
+              <option>Harmaa</option>
+              <option>Sininen</option>
+              <option>Punainen</option>
+              <option>Vihreä</option>
+              <option>Muu / kerro lisätiedoissa</option>
+            </select>
+          </div>
+
+          <div class="mt-6">
+            <p class="text-xs md:text-sm text-gray-600 mb-2">Väriteema</p>
+            <div class="flex gap-2">
+              <span class="h-6 w-10 rounded" style="background:#9ECAD6"></span>
+              <span class="h-6 w-10 rounded" style="background:#748DAE"></span>
+              <span class="h-6 w-10 rounded" style="background:#F5CBCB"></span>
+              <span class="h-6 w-10 rounded" style="background:#FFEAEA"></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="quote" class="rounded-xl p-5 md:p-6 border shadow-sm" style="border-color:#F5CBCB; background:#fff">
+          <h3 class="text-lg md:text-xl font-semibold">Pyydä nopea tarjous</h3>
+          <form action="https://formspree.io/f/mblorkny" method="POST" class="grid gap-3 md:gap-4 mt-3">
+            <input type="text" name="name" placeholder="Nimesi" required class="border p-2.5 rounded-md" />
+            <input type="email" name="email" placeholder="Sähköposti" required class="border p-2.5 rounded-md" />
+            <input type="tel" name="phone" placeholder="Puhelin (valinnainen)" class="border p-2.5 rounded-md" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <input type="url" name="model_url" placeholder="Mallin linkki (STL/STEP)" class="border p-2.5 rounded-md" />
+              <select name="material" class="border p-2.5 rounded-md">
+                <option value="" disabled selected>Materiaali</option>
+                <option value="PLA">PLA</option>
+                <option value="PETG">PETG</option>
+                <option value="Other">Muu / ehdota</option>
+              </select>
+            </div>
+            <textarea name="notes" placeholder="Mitat, käyttötarkoitus, väri, määrä…" class="border p-2.5 rounded-md" rows="4"></textarea>
+            <button type="submit" class="px-4 py-2.5 rounded-md font-medium text-white shadow-sm active:scale-[.99]" style="background:#748DAE">Lähetä</button>
+            <p class="text-xs text-gray-600">Lähetys: Formspree</p>
+            <input type="hidden" name="_subject" value="Uusi tarjouspyyntö – kouvosto3d.fi" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="py-10 md:py-14">
+      <div class="mx-auto max-w-5xl px-4">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Galleria</h2>
+        <p class="mt-2 text-gray-600 leading-relaxed">Esimerkkejä tulosteista (korvaa omilla kuvillasi).</p>
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto1/800/800" alt="Tuloste 1" class="w-full h-full object-cover aspect-square" />
+          </figure>
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto2/800/800" alt="Tuloste 2" class="w-full h-full object-cover aspect-square" />
+          </figure>
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto3/800/800" alt="Tuloste 3" class="w-full h-full object-cover aspect-square" />
+          </figure>
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto4/800/800" alt="Tuloste 4" class="w-full h-full object-cover aspect-square" />
+          </figure>
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto5/800/800" alt="Tuloste 5" class="w-full h-full object-cover aspect-square" />
+          </figure>
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto6/800/800" alt="Tuloste 6" class="w-full h-full object-cover aspect-square" />
+          </figure>
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto7/800/800" alt="Tuloste 7" class="w-full h-full object-cover aspect-square" />
+          </figure>
+          <figure class="rounded-xl overflow-hidden border bg-white hover:shadow-sm transition-shadow" style="border-color:#F5CBCB">
+            <img src="https://picsum.photos/seed/kouvosto8/800/800" alt="Tuloste 8" class="w-full h-full object-cover aspect-square" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- NÄIN TILAAT -->
+    <section id="how" class="py-10 md:py-14" style="background:#FFEAEA">
+      <div class="mx-auto max-w-5xl px-4 grid md:grid-cols-3 gap-6 md:gap-8">
+        <div class="rounded-lg p-4 md:p-5 border" style="border-color:#F5CBCB; background:#fff">
+          <div class="text-sm font-semibold mb-1" style="color:#748DAE">1.</div>
+          <div class="font-medium md:text-lg">Lähetä malli tai idea</div>
+          <div class="text-sm md:text-base text-gray-700 leading-relaxed">Liitä linkki tai kuvaile tarpeesi. Autamme tarvittaessa suunnittelussa.</div>
+        </div>
+        <div class="rounded-lg p-4 md:p-5 border" style="border-color:#748DAE; background:#fff">
+          <div class="text-sm font-semibold mb-1" style="color:#748DAE">2.</div>
+          <div class="font-medium md:text-lg">Saat tarjouksen</div>
+          <div class="text-sm md:text-base text-gray-700 leading-relaxed">Ehdotamme materiaalin, asetukset ja hinnan. Vahvistat ennen tulostusta.</div>
+        </div>
+        <div class="rounded-lg p-4 md:p-5 border" style="border-color:#F5CBCB; background:#fff">
+          <div class="text-sm font-semibold mb-1" style="color:#748DAE">3.</div>
+          <div class="font-medium md:text-lg">Nouto tai toimitus</div>
+          <div class="text-sm md:text-base text-gray-700 leading-relaxed">Paikallinen nouto tai postitus. Kuitti yrityksille saatavilla.</div>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer>
-    <p>&copy; 2025 Kouvosto3d – Kaikki oikeudet pidätetään</p>
-    <p><a href="mailto:kauppa@kouvosto3d.fi" style="color: #ccc;">kauppa@kouvosto3d.fi</a></p>
+
+  <!-- Footer -->
+  <footer class="border-t" style="border-color:#9ECAD6">
+    <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-gray-600 grid gap-2">
+      <div>© <span id="year"></span> kouvosto3d</div>
+      <div class="flex flex-wrap items-center gap-4">
+        <a class="underline underline-offset-4" href="mailto:kauppa@kouvosto3d.fi">kauppa@kouvosto3d.fi</a>
+        <a class="underline underline-offset-4" href="https://kouvosto3d.fi" target="_blank" rel="noreferrer">kouvosto3d.fi</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- Sticky mobile CTA -->
+  <div class="fixed bottom-0 left-0 right-0 md:hidden border-t backdrop-blur px-3 py-3" style="background:rgba(255,255,255,.96); border-color:#F5CBCB">
+    <div class="mx-auto max-w-5xl flex gap-2">
+      <a href="#quote" class="flex-1 text-center px-4 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
+      <a href="#materials" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Materiaalit</a>
+    </div>
+  </div>
+
   <script>
-    function openModal(id) {
-      document.getElementById(id).style.display = 'flex';
-    }
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
