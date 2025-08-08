@@ -1,8 +1,8 @@
 # kouvosto3d
 
+
 Generated with ChatGPT
 
-## Development
+Static site for Kouvosto3D.
 
-- `update_sitemap_lastmod.py` updates `sitemap.xml` with the current date.
-- `.github/workflows/update-sitemap.yml` runs the script on each push to keep the sitemap fresh.
+Offers FDM 3D printing of PLA and PETG materials in Kouvola, including trendikkäät viraalit tulosteet.
