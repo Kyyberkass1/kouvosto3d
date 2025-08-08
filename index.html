@@ -161,19 +161,37 @@
         <div id="quote" class="rounded-xl p-5 md:p-6 border shadow-sm" style="border-color:#F5CBCB; background:#fff">
           <h3 class="text-lg md:text-xl font-semibold">Pyydä nopea tarjous</h3>
           <form action="https://formspree.io/f/mblorkny" method="POST" class="grid gap-3 md:gap-4 mt-3">
-            <input type="text" name="name" placeholder="Nimesi" required class="border p-2.5 rounded-md" />
-            <input type="email" name="email" placeholder="Sähköposti" required class="border p-2.5 rounded-md" />
-            <input type="tel" name="phone" placeholder="Puhelin (valinnainen)" class="border p-2.5 rounded-md" />
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <input type="url" name="model_url" placeholder="Mallin linkki (STL/STEP)" class="border p-2.5 rounded-md" />
-              <select name="material" class="border p-2.5 rounded-md">
-                <option value="" disabled selected>Materiaali</option>
-                <option value="PLA">PLA</option>
-                <option value="PETG">PETG</option>
-                <option value="Other">Muu / ehdota</option>
-              </select>
+            <div class="grid gap-1">
+              <label for="name" class="block font-medium">Nimi</label>
+              <input id="name" type="text" name="name" placeholder="Nimesi" required class="border p-2.5 rounded-md" />
             </div>
-            <textarea name="notes" placeholder="Mitat, käyttötarkoitus, väri, määrä…" class="border p-2.5 rounded-md" rows="4"></textarea>
+            <div class="grid gap-1">
+              <label for="email" class="block font-medium">Sähköposti</label>
+              <input id="email" type="email" name="email" placeholder="Sähköposti" required class="border p-2.5 rounded-md" />
+            </div>
+            <div class="grid gap-1">
+              <label for="phone" class="block font-medium">Puhelin (valinnainen)</label>
+              <input id="phone" type="tel" name="phone" placeholder="Puhelin (valinnainen)" class="border p-2.5 rounded-md" />
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="grid gap-1">
+                <label for="model_url" class="block font-medium">Mallin linkki (STL/STEP)</label>
+                <input id="model_url" type="url" name="model_url" placeholder="Mallin linkki (STL/STEP)" class="border p-2.5 rounded-md" />
+              </div>
+              <div class="grid gap-1">
+                <label for="material" class="block font-medium">Materiaali</label>
+                <select id="material" name="material" class="border p-2.5 rounded-md">
+                  <option value="" disabled selected>Materiaali</option>
+                  <option value="PLA">PLA</option>
+                  <option value="PETG">PETG</option>
+                  <option value="Other">Muu / ehdota</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid gap-1">
+              <label for="notes" class="block font-medium">Lisätiedot</label>
+              <textarea id="notes" name="notes" placeholder="Mitat, käyttötarkoitus, väri, määrä…" class="border p-2.5 rounded-md" rows="4"></textarea>
+            </div>
             <button type="submit" class="px-4 py-2.5 rounded-md font-medium text-white shadow-sm active:scale-[.99]" style="background:#748DAE">Lähetä</button>
             <p class="text-xs text-gray-600">Lähetys: Formspree</p>
             <input type="hidden" name="_subject" value="Uusi tarjouspyyntö – kouvosto3d.fi" />
