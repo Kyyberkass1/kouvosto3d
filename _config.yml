@@ -1,0 +1,4 @@
+# Disable Jekyll processing for these files so they stay raw
+exclude:
+  - sitemap.xml
+  - robots.txt
