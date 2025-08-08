@@ -40,10 +40,10 @@
 </head>
 <body class="min-h-screen" style="background:#fff; color:#1f2937">
   <!-- Header -->
-  <header class="sticky top-0 z-50 border-b backdrop-blur" style="background:rgba(255,255,255,.95); border-color:#9ECAD6">
-    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center gap-3">
+  <header class="sticky top-0 z-50 border-b backdrop-blur" style="background:rgba(255,255,255,.6); border-color:#9ECAD6">
+    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center relative">
       <img src="https://i.imgur.com/ds0WVfb.png" alt="kouvosto3d logo" class="h-12 w-auto" />
-      <span class="font-semibold tracking-tight text-lg sm:text-xl">kouvosto3d</span>
+      <span class="font-semibold tracking-tight text-lg sm:text-xl absolute left-1/2 -translate-x-1/2">kouvosto3d</span>
       <nav class="ml-auto hidden md:flex items-center gap-6 text-sm">
         <a class="hover:underline" href="#capabilities">Palvelut</a>
         <a class="hover:underline" href="#materials">Materiaalit</a>
@@ -256,7 +256,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t" style="border-color:#9ECAD6">
+  <footer class="border-t backdrop-blur" style="background:rgba(255,255,255,.6); border-color:#9ECAD6">
     <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-gray-600 grid gap-2">
       <div>© <span id="year"></span> kouvosto3d</div>
       <div class="flex flex-wrap items-center gap-4">
@@ -304,26 +304,26 @@
   <!-- Sticky mobile CTA -->
     <div class="fixed bottom-0 left-0 right-0 md:hidden border-t backdrop-blur px-3 py-3" style="background:rgba(255,255,255,.96); border-color:#F5CBCB">
       <div class="mx-auto max-w-5xl flex items-center gap-2">
+        <a href="#quote" class="flex-1 text-center px-4 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
+        <a href="#gallery" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Galleria</a>
         <button
           id="menuBtn"
           aria-label="Valikko"
           aria-expanded="false"
-          class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+          class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 ml-auto transition-transform"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <a href="#quote" class="flex-1 text-center px-4 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
-        <a href="#gallery" class="px-4 py-2 rounded-md font-medium border" style="border-color:#748DAE; color:#748DAE">Galleria</a>
       </div>
   </div>
 
   <!-- Mobile nav -->
   <nav
     id="mobileNav"
-    class="md:hidden hidden fixed bottom-16 left-3 z-50 border rounded-md p-4 text-lg"
-    style="background:rgba(255,255,255,.95); border-color:#9ECAD6"
+    class="md:hidden fixed bottom-16 right-3 z-50 border rounded-md p-4 text-lg backdrop-blur shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none origin-bottom-right"
+    style="background:rgba(255,255,255,.9); border-color:#9ECAD6"
   >
     <div class="flex flex-col gap-4">
       <a class="hover:underline" href="#capabilities">Palvelut</a>
@@ -354,7 +354,10 @@
     menuBtn.addEventListener('click', () => {
       const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
       menuBtn.setAttribute('aria-expanded', String(!expanded));
-      mobileNav.classList.toggle('hidden');
+      menuBtn.classList.toggle('rotate-90');
+      mobileNav.classList.toggle('opacity-0');
+      mobileNav.classList.toggle('pointer-events-none');
+      mobileNav.classList.toggle('scale-95');
       if (!expanded) {
         const firstLink = mobileNav.querySelector('a');
         firstLink && firstLink.focus();
@@ -363,7 +366,8 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        mobileNav.classList.add('hidden');
+        mobileNav.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+        menuBtn.classList.remove('rotate-90');
         menuBtn.setAttribute('aria-expanded', 'false');
         menuBtn.focus();
         plaModal.classList.add('hidden');
@@ -374,7 +378,8 @@
 
     mobileNav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
-        mobileNav.classList.add('hidden');
+        mobileNav.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+        menuBtn.classList.remove('rotate-90');
         menuBtn.setAttribute('aria-expanded', 'false');
       });
     });
