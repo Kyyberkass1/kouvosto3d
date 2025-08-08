@@ -44,6 +44,22 @@
     <div class="mx-auto max-w-5xl px-4 py-3 flex items-center gap-3">
       <img src="https://i.imgur.com/ds0WVfb.png" alt="kouvosto3d logo" class="h-12 w-auto" />
       <span class="font-semibold tracking-tight text-lg sm:text-xl">kouvosto3d</span>
+      <button
+        id="menuBtn"
+        class="ml-auto md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+        aria-label="Valikko"
+        aria-expanded="false"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
       <nav class="ml-auto hidden md:flex items-center gap-6 text-sm">
         <a class="hover:underline" href="#capabilities">Palvelut</a>
         <a class="hover:underline" href="#materials">Materiaalit</a>
@@ -52,6 +68,24 @@
         <a href="#quote" class="px-3 py-2 rounded-md font-medium text-white" style="background:#748DAE">Pyydä tarjous</a>
       </nav>
     </div>
+    <nav
+      id="mobileNav"
+      class="md:hidden hidden border-b"
+      style="background:rgba(255,255,255,.95); border-color:#9ECAD6"
+    >
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+        <a class="hover:underline" href="#capabilities">Palvelut</a>
+        <a class="hover:underline" href="#materials">Materiaalit</a>
+        <a class="hover:underline" href="#gallery">Galleria</a>
+        <a class="hover:underline" href="#how">Näin tilaat</a>
+        <a
+          href="#quote"
+          class="px-3 py-2 rounded-md font-medium text-white text-center"
+          style="background:#748DAE"
+          >Pyydä tarjous</a
+        >
+      </div>
+    </nav>
   </header>
 
   <main>
@@ -281,6 +315,34 @@
     const infoBtn = document.getElementById('infoBtn');
     const infoModal = document.getElementById('infoModal');
     const infoClose = document.getElementById('infoClose');
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileNav.classList.toggle('hidden');
+      if (!expanded) {
+        const firstLink = mobileNav.querySelector('a');
+        firstLink && firstLink.focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        mobileNav.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.focus();
+      }
+    });
+
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     infoBtn.addEventListener('click', () => {
       infoModal.classList.remove('hidden');
